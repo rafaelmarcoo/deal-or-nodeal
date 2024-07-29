@@ -24,7 +24,7 @@ public class Cases
     private HashMap<Integer, Double> cases;
     private int[] caseNums;
     private double[] caseValues;
-    private final int totalCases = 26;
+    private int totalCases = 26;
     
     public Cases()
     {
@@ -70,39 +70,37 @@ public class Cases
         {
             System.out.println("Error reading from file.");
         }
+        
+        
+    }
+
+    public HashMap<Integer, Double> getCases() 
+    {
+        return cases;
+    }
+
+    public int[] getCaseNums() 
+    {
+        return caseNums;
+    }
+
+    public double[] getCaseValues() 
+    {
+        return caseValues;
     }
     
-    public static void main(String[] args) 
+    public int getTotalCases() 
     {
-        Cases cases = new Cases();
-        
-        for(int i = 0; i < cases.caseValues.length; i++)
-        {
-            System.out.println("Case " + cases.caseNums[i] + ": $" + cases.caseValues[i]);
-        }
-        
-        int count = 0;
-        boolean moved = false;
-        for(int i = 0; i < cases.caseNums.length; i++)
-        {
-            if(count == 8)
-            {
-                System.out.println();
-                count = 0;
-                moved = true;
-            }
-            else
-            {
-                System.out.print(cases.caseNums[i] + "  ");
-                count++;
-            }
-        }
-        System.out.println();
-        
-        for(int i : cases.cases.keySet())
-        {
-            System.out.println("Case " + i + " - Value: $" + cases.cases.get(i));
-        }
+        return totalCases;
+    }
+    
+    
+    public static void main(String[] args) 
+    {   
+//        for(int i : cases.getCases().keySet())
+//        {
+//            System.out.println("Case " + i + " - Value: $" + cases.getCases().get(i));
+//        }
     }
 }
 
