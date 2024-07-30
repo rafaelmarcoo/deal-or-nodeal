@@ -12,23 +12,32 @@ import java.util.Scanner;
  */
 public class DealOrNoDealGame extends Methods
 {
+    private Scanner scan = new Scanner(System.in);
+    public static int playerCase;
+    public static double playerCaseValue;
+    
     @Override
     public void showCases(Cases cases)
     {
         System.out.println("Cases:");
         int count = 0;
-        for(int i = 0; i < cases.getCaseNums().length; i++)
+        for(int i = 1; i <= cases.getCaseNums().length; i++)
         {
-            if(count == 8)
+            if(count == 7)
             {
                 System.out.println();
                 count = 0;
             }
+            
+            if(!cases.getCases().containsKey(i))
+            {
+                System.out.print("X  ");
+            }
             else
             {
-                System.out.print(cases.getCaseNums()[i] + "  ");
-                count++;
+                System.out.print(i + "  ");
             }
+            count++;
         }
         System.out.println();
     }
@@ -36,18 +45,19 @@ public class DealOrNoDealGame extends Methods
     @Override
     public void selectCase(Cases cases) 
     {
-        Scanner scan = new Scanner(System.in);
-   
+        showCases(cases);
+        
         System.out.println("Please select a case to keep for the game!");
         String input = scan.next();
+        
         int caseNum = Integer.parseInt(input);
-        int playerCase = cases.getCaseNums()[caseNum - 1];
-        cases.getCases().remove(caseNum - 1);
-        cases.getCaseNums()[caseNum - 1] = 0;
-        cases.getCaseValues()[caseNum - 1] = 0.0;
+        playerCase = caseNum;
+        playerCaseValue = cases.getCases().get(caseNum);
+        cases.getCases().remove(caseNum);
+//        cases.getCaseNums()[caseNum - 1] = 0;
+//        cases.getCaseValues()[caseNum - 1] = 0.0;
         System.out.println("You have selected Case " + playerCase + "!");
         System.out.println();
-        
     }
 
     @Override
@@ -55,9 +65,8 @@ public class DealOrNoDealGame extends Methods
     {
         int count = 0;
         int casesToPick = 5;
-        Scanner scan = new Scanner(System.in);
         
-        System.out.println("Round 1!");
+        System.out.println("Round " + roundNum + "!");
         while(count < 5)
         {
             count++;
@@ -68,12 +77,10 @@ public class DealOrNoDealGame extends Methods
             String input = scan.next();
             int caseNum = Integer.parseInt(input);
             
-            System.out.println("Case " + cases.getCaseNums()[caseNum - 1]
-            + " contains: $" + cases.getCases().get(caseNum - 1));
+            System.out.println("Case " + caseNum
+            + " contains: $" + cases.getCases().get(caseNum));
             
-            cases.getCases().remove(caseNum - 1);
-            cases.getCaseNums()[caseNum - 1] = 0;
-            cases.getCaseValues()[caseNum - 1] = 0.0;
+            cases.getCases().remove(caseNum);
             
             System.out.println("");
             casesToPick--;
@@ -82,15 +89,51 @@ public class DealOrNoDealGame extends Methods
     }
     
     @Override
+    public double bankerOffer(Cases cases)
+    {
+        double totalValue = 0;
+        for(double d : cases.getCases().values())
+        {
+            totalValue += d;
+        }
+        
+        double avgTot = totalValue / cases.getCases().size();
+        double offer = avgTot * 0.75;
+        double roundedOffer = Math.round(offer * 100.0) / 100.0;
+        
+        return roundedOffer;
+    }
+    
+    @Override
     public void startGame() 
     {
         Cases cases = new Cases();
+        double offer = 0;
 
         displayWelcomeMessage();
         selectCase(cases);
 
         int roundNum = 1;
         playRound(cases, roundNum);    
+        roundNum++;
+        System.out.println();
+        
+        offer = bankerOffer(cases);
+        System.out.println("Banker's offer is $" + offer + "\n"
+        + "Deal? or no deal? \n");
+        
+        System.out.println("Your case " + playerCase + " contains $" + playerCaseValue);
+        
+        
+//        for(int i : cases.getCases().keySet())
+//        {
+//            System.out.println("Case " + i + " - Value: $" + cases.getCases().get(i));
+//        }
+    }
+    
+    public static void main(String[] args) 
+    {
+        
     }
 
 }

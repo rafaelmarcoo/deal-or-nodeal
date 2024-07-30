@@ -97,10 +97,12 @@ public class Cases
     
     public static void main(String[] args) 
     {   
-//        for(int i : cases.getCases().keySet())
-//        {
-//            System.out.println("Case " + i + " - Value: $" + cases.getCases().get(i));
-//        }
+        Cases cases = new Cases();
+        
+        for(int i : cases.getCases().keySet())
+        {
+            System.out.println("Case " + i + " - Value: $" + cases.getCases().get(i));
+        }
     }
 }
 
