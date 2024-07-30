@@ -12,7 +12,10 @@ public class Main
 {
     public static void main(String[] args) 
     {
+        Cases cases = new Cases();
         DealOrNoDealGame game = new DealOrNoDealGame();
-        game.startGame();
+        
+        game.displayWelcomeMessage();
+        game.showCases(cases);
     }
 }

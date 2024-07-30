@@ -12,12 +12,9 @@ public abstract class Methods
 {
     public abstract void showCases(Cases cases);
     public abstract void startGame();
-    public abstract void selectCase(Cases cases);
-    public abstract void playRound(Cases cases, int roundNum);
     
     protected void displayWelcomeMessage() 
     {
         System.out.println("Welcome to Deal or No Deal!");
-        System.out.println();
     }
 }

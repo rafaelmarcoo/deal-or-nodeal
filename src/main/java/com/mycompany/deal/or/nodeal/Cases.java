@@ -8,8 +8,10 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
+import java.util.HashMap;
+import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -17,14 +19,18 @@ import java.util.Collections;
  */
 
 
-public class Cases extends Case
+public class Cases 
 {
-    private ArrayList<Case> cases;
+    private HashMap<Integer, Double> cases;
+    private int[] caseNums;
+    private double[] caseValues;
     private int totalCases = 26;
     
     public Cases()
     {
-        cases = new ArrayList<>();
+        cases = new HashMap<>();
+        caseNums = new int[totalCases];
+        caseValues = new double[totalCases];
         
         try 
         {
@@ -36,26 +42,25 @@ public class Cases extends Case
             while((line = br.readLine()) != null && index < totalCases)
             {
                 double value = Double.parseDouble(line);
-                cases.add(new Case(index + 1, value));
+                caseValues[index] = value;
+                caseNums[index] = index + 1;
                 index++;
             }
             br.close();  
             
-            Collections.shuffle(cases);
+            Random rand = new Random();
+            for(int i = 0; i < caseValues.length; i++)
+            {
+                int randomIndex = rand.nextInt(caseValues.length);
+                double temp = caseValues[randomIndex];
+                caseValues[randomIndex] = caseValues[i];
+                caseValues[i] = temp;
+            }
             
-//            Random rand = new Random();
-//            for(int i = 0; i < caseValues.length; i++)
-//            {
-//                int randomIndex = rand.nextInt(caseValues.length);
-//                double temp = caseValues[randomIndex];
-//                caseValues[randomIndex] = caseValues[i];
-//                caseValues[i] = temp;
-//            }
-//            
-//            for(int i = 0; i < caseNums.length; i++)
-//            {
-//                cases.put(caseNums[i], caseValues[i]);
-//            }
+            for(int i = 0; i < caseNums.length; i++)
+            {
+                cases.put(caseNums[i], caseValues[i]);
+            }
         } 
         catch(FileNotFoundException ex) 
         {
@@ -65,17 +70,30 @@ public class Cases extends Case
         {
             System.out.println("Error reading from file.");
         }
+        
+        
     }
-    
-    public ArrayList<Case> getCases()
+
+    public HashMap<Integer, Double> getCases() 
     {
         return cases;
     }
 
-    public int getTotalCases()
+    public int[] getCaseNums() 
+    {
+        return caseNums;
+    }
+
+    public double[] getCaseValues() 
+    {
+        return caseValues;
+    }
+    
+    public int getTotalCases() 
     {
         return totalCases;
     }
+    
     
     public static void main(String[] args) 
     {   
@@ -84,8 +102,6 @@ public class Cases extends Case
 //            System.out.println("Case " + i + " - Value: $" + cases.getCases().get(i));
 //        }
     }
-
-    
 }
 
 
