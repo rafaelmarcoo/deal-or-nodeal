@@ -14,10 +14,20 @@ public abstract class Methods
     public abstract void startGame();
     public abstract void selectCase(Cases cases);
     public abstract void playRound(Cases cases, int roundNum);
-    public abstract double bankerOffer(Cases cases);
+    public abstract void bankerOffer(Cases cases);
+    public abstract void tutorial();
     
     protected void displayWelcomeMessage() 
     {
-        System.out.println("Welcome to Deal or No Deal!");
+        System.out.println("\nWelcome to Deal or No Deal!");
+        System.out.print("Enter 'w' to start a game! || Enter 't' for a tutorial! || To quit, enter 'x'!  => ");
+    }
+    
+    protected void displayExitMessage()
+    {
+        System.out.println("****************************************************************************************************************************");
+        System.out.println("Thank you for visiting Deal or No Deal! See you soon :)");
+        System.out.println("****************************************************************************************************************************");
+
     }
 }
