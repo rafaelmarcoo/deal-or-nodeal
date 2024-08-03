@@ -25,8 +25,8 @@ public abstract class Methods
     
     protected void displayExitMessage()
     {
-        System.out.println("****************************************************************************************************************************");
-        System.out.println("Thank you for visiting Deal or No Deal! See you soon :)");
+        System.out.println("\n****************************************************************************************************************************");
+        System.out.println("Thank you for playing Deal or No Deal! See you soon :)");
         System.out.println("****************************************************************************************************************************");
 
     }

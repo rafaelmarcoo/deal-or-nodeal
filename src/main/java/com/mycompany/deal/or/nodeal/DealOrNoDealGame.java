@@ -48,12 +48,20 @@ public class DealOrNoDealGame extends Methods
     @Override
     public void selectCase(Cases cases) 
     {
+        System.out.println("\n************************ Pick your case! ************************");
         showCases(cases);
         
         while(true)
         {
             System.out.print("Please select a case to keep for the game! => ");
             String input = scan.nextLine().trim();
+            
+            if(input.equalsIgnoreCase("x"))
+            {
+                displayExitMessage();
+                System.exit(0);
+            }
+            
             try
             {
                 int caseNum = Integer.parseInt(input);
@@ -100,21 +108,66 @@ public class DealOrNoDealGame extends Methods
         while(count < 5)
         {
             count++;
-            
             showCases(cases);
-            System.out.print("Please pick a case! (" + casesToPick +
+            
+            while(true)
+            {
+                System.out.print("Please pick a case! (" + casesToPick +
                     " more case(s) to pick.) =>  ");
-            String input = scan.next();
-            int caseNum = Integer.parseInt(input);
-            scan.nextLine();
+                String input = scan.nextLine().trim();
+                
+                if(input.equalsIgnoreCase("x"))
+                {
+                    displayExitMessage();
+                    System.exit(0);
+                }
+                
+                try
+                {
+                    int caseNum = Integer.parseInt(input);
+                    
+                    if(caseNum <= 0 || caseNum > cases.getCaseNums().length)
+                    {
+                        System.out.println("Invalid case number! Please try again!\n");
+                        continue;
+                    }
+                    else if(!cases.getCases().containsKey(caseNum))
+                    {
+                        System.out.println("Case has already been opened! Pick another one!\n");
+                        continue;
+                    }
+                    else
+                    {
+                        System.out.println("-------- Case " + caseNum
+                        + " contains: $" + cases.getCases().get(caseNum) + " --------");
+
+                        cases.getCases().remove(caseNum);
+
+                        System.out.println("");
+                        casesToPick--;
+                        
+                        break;
+                    }
+                }
+                catch(Exception E)
+                {
+                    System.out.println(E + ". Invalid input! Only case numbers!\n");
+                }
+            }
             
-            System.out.println("Case " + caseNum
-            + " contains: $" + cases.getCases().get(caseNum));
-            
-            cases.getCases().remove(caseNum);
-            
-            System.out.println("");
-            casesToPick--;
+//            System.out.print("Please pick a case! (" + casesToPick +
+//                    " more case(s) to pick.) =>  ");
+//            String input = scan.next();
+//            int caseNum = Integer.parseInt(input);
+//            scan.nextLine();
+//            
+//            System.out.println("Case " + caseNum
+//            + " contains: $" + cases.getCases().get(caseNum));
+//            
+//            cases.getCases().remove(caseNum);
+//            
+//            System.out.println("");
+//            casesToPick--;
         }
         
     }
