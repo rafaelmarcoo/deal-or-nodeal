@@ -10,12 +10,27 @@ import java.util.Scanner;
  *
  * @author rafae
  */
-public class DealOrNoDealGame extends Methods
+public class DealOrNoDealGame implements GameMessages, GameMechanics
 {
-    private Scanner scan = new Scanner(System.in);
+    private final Scanner scan = new Scanner(System.in);
     public static int playerCase;
     public static double playerCaseValue;
     public static int roundNum = 1;
+    
+    @Override
+    public void displayWelcomeMessage() 
+    {
+        System.out.println("\nWelcome to Deal or No Deal!");
+        System.out.print("Enter 'w' to start a game! || Enter 't' for a tutorial! || To quit, enter 'x'!  => ");
+    }
+    
+    @Override
+    public void displayExitMessage()
+    {
+        System.out.println("\n****************************************************************************************************************************");
+        System.out.println("Thank you for playing Deal or No Deal! See you soon :)");
+        System.out.println("****************************************************************************************************************************");
+    }
     
     @Override
     public void showCases(Cases cases)
@@ -41,7 +56,6 @@ public class DealOrNoDealGame extends Methods
             }
             count++;
         }
-        
         System.out.println();
     }
     
@@ -69,7 +83,6 @@ public class DealOrNoDealGame extends Methods
                 if(caseNum <= 0 || caseNum > cases.getCaseNums().length)
                 {
                     System.out.println("Invalid case number! Please try again!\n");
-//                    continue;
                 }
                 else
                 {
@@ -84,19 +97,8 @@ public class DealOrNoDealGame extends Methods
             catch(NumberFormatException E)
             {
                 System.out.println(E + ". Invalid input! Only case numbers!\n");
-//                continue;
             }
         }
-        
-//        System.out.print("Please select a case to keep for the game! => ");
-//        String input = scan.next();
-//        int caseNum = Integer.parseInt(input);
-//        playerCase = caseNum;
-//        playerCaseValue = cases.getCases().get(caseNum);
-//        cases.getCases().remove(caseNum);
-//        System.out.println("You have selected Case " + playerCase + "!");
-//        System.out.println();
-//        
     }
 
     @Override
@@ -157,20 +159,6 @@ public class DealOrNoDealGame extends Methods
                     System.out.println(E + ". Invalid input! Only case numbers!\n");
                 }
             }
-            
-//            System.out.print("Please pick a case! (" + casesToPick +
-//                    " more case(s) to pick.) =>  ");
-//            String input = scan.next();
-//            int caseNum = Integer.parseInt(input);
-//            scan.nextLine();
-//            
-//            System.out.println("Case " + caseNum
-//            + " contains: $" + cases.getCases().get(caseNum));
-//            
-//            cases.getCases().remove(caseNum);
-//            
-//            System.out.println("");
-//            casesToPick--;
         }
         
     }
@@ -215,13 +203,10 @@ public class DealOrNoDealGame extends Methods
     public void startGame() 
     {
         Cases cases = new Cases();
-//        double offer = 0;
-//        int roundNum = 1;
         
         while(true)
         {
             displayWelcomeMessage();
-//            System.out.print("Enter 'w' to start a game! || Enter 't' for a tutorial! || To quit, enter 'x'!  = ");
             String response = scan.nextLine().trim();
             
             if(response.equalsIgnoreCase("w"))
@@ -258,11 +243,6 @@ public class DealOrNoDealGame extends Methods
             displayExitMessage();
             break;
         }
-        
-//        for(int i : cases.getCases().keySet())
-//        {
-//            System.out.println("Case " + i + " - Value: $" + cases.getCases().get(i));
-//        }
     }
     
     public static void main(String[] args) 
