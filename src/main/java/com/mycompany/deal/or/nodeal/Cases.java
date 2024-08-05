@@ -92,15 +92,15 @@ public class Cases
         return totalCases;
     }
     
-    public static void main(String[] args) 
-    {   
-        Cases cases = new Cases();
-        
-        for(int i : cases.getCases().keySet())
-        {
-            System.out.println("Case " + i + " - Value: $" + cases.getCases().get(i));
-        }
-    }
+//    public static void main(String[] args) 
+//    {   
+//        Cases cases = new Cases();
+//        
+//        for(int i : cases.getCases().keySet())
+//        {
+//            System.out.println("Case " + i + " - Value: $" + cases.getCases().get(i));
+//        }
+//    }
 }
 
 

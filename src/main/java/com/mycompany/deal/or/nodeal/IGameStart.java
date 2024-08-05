@@ -8,9 +8,7 @@ package com.mycompany.deal.or.nodeal;
  *
  * @author rafae
  */
-public interface GameMessages 
-{   
-    public void tutorial();
-    public void displayWelcomeMessage();
-    public void displayExitMessage();
+public interface IGameStart 
+{
+    public void startGame();
 }
