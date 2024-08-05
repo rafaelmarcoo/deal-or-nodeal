@@ -9,14 +9,10 @@ package com.mycompany.deal.or.nodeal;
  */
 public class DealOrNoDealGame extends GameMechanics implements IGameStart
 {
-//    private GameUI ui;
-//    private GameMechanics mechanics;
     private final Cases cases;
     
     public DealOrNoDealGame()
     {
-//        ui = new GameUI();
-//        mechanics = new GameMechanics();
         cases = new Cases();
     }
     
