@@ -48,7 +48,8 @@ public class DealOrNoDealGame extends Methods
     @Override
     public void selectCase(Cases cases) 
     {
-        System.out.println("\n************************ Pick your case! ************************");
+        System.out.println("\n************************ Pick your case! ************************\n");
+        System.out.println("Enter 'x' to quit anytime!");
         showCases(cases);
         
         while(true)
@@ -68,7 +69,7 @@ public class DealOrNoDealGame extends Methods
                 if(caseNum <= 0 || caseNum > cases.getCaseNums().length)
                 {
                     System.out.println("Invalid case number! Please try again!\n");
-                    continue;
+//                    continue;
                 }
                 else
                 {
@@ -80,10 +81,10 @@ public class DealOrNoDealGame extends Methods
                     break;
                 }
             }
-            catch(Exception E)
+            catch(NumberFormatException E)
             {
                 System.out.println(E + ". Invalid input! Only case numbers!\n");
-                continue;
+//                continue;
             }
         }
         
@@ -105,6 +106,8 @@ public class DealOrNoDealGame extends Methods
         int casesToPick = 5;
         
         System.out.println("************************ Round " + roundNum + "! ************************");
+        System.out.println("\nEnter 'x' to quit anytime!");
+
         while(count < 5)
         {
             count++;
@@ -129,12 +132,12 @@ public class DealOrNoDealGame extends Methods
                     if(caseNum <= 0 || caseNum > cases.getCaseNums().length)
                     {
                         System.out.println("Invalid case number! Please try again!\n");
-                        continue;
+//                        continue;
                     }
                     else if(!cases.getCases().containsKey(caseNum))
                     {
                         System.out.println("Case has already been opened! Pick another one!\n");
-                        continue;
+//                        continue;
                     }
                     else
                     {
@@ -149,7 +152,7 @@ public class DealOrNoDealGame extends Methods
                         break;
                     }
                 }
-                catch(Exception E)
+                catch(NumberFormatException E)
                 {
                     System.out.println(E + ". Invalid input! Only case numbers!\n");
                 }
@@ -182,7 +185,7 @@ public class DealOrNoDealGame extends Methods
         }
         
         double avgTot = totalValue / cases.getCases().size();
-        double offer = avgTot * 0.75;
+        double offer = avgTot * 0.30;
         double roundedOffer = Math.round(offer * 100.0) / 100.0;
         
         System.out.println("Banker's offer is $" + roundedOffer + "\n"
@@ -212,7 +215,7 @@ public class DealOrNoDealGame extends Methods
     public void startGame() 
     {
         Cases cases = new Cases();
-        double offer = 0;
+//        double offer = 0;
 //        int roundNum = 1;
         
         while(true)
