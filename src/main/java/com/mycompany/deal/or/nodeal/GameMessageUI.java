@@ -4,13 +4,11 @@
  */
 package com.mycompany.deal.or.nodeal;
 
-import java.util.Scanner;
-
 /**
  *
  * @author rafae
  */
-public class GameUI implements ImessageUI, IinputUI, IcaseDisplayUI
+public class GameMessageUI implements ImessageUI
 {
     @Override
     public void displayWelcomeMessage() 
@@ -44,39 +42,5 @@ public class GameUI implements ImessageUI, IinputUI, IcaseDisplayUI
         System.out.println("\n****************************************************************************************************************************");
         System.out.println("Thank you for playing Deal or No Deal! See you soon :)");
         System.out.println("****************************************************************************************************************************");
-    }
-    
-    @Override
-    public void showCases(Cases cases)
-    {
-        System.out.println("\nCases:");
-        int count = 0;
-        
-        for(int i = 1; i <= cases.getCaseNums().length; i++)
-        {
-            if(count == 7)
-            {
-                System.out.println();
-                count = 0;
-            }
-            
-            if(!cases.getCases().containsKey(i))
-            {
-                System.out.print("{ X }  ");
-            }
-            else
-            {
-                System.out.print("{ " + i + " }  ");
-            }
-            count++;
-        }
-        System.out.println();
-    }
-    
-    @Override
-    public String getInput()
-    {
-        Scanner scan = new Scanner(System.in);
-        return scan.nextLine().trim();
     }
 }

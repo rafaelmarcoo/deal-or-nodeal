@@ -8,9 +8,7 @@ package com.mycompany.deal.or.nodeal;
  *
  * @author rafae
  */
-public interface IGamePlay 
+public interface IcaseDisplayUI 
 {
-    public void selectCase(Cases cases);
-    public void playRound(Cases cases, int roundNum);
-    public void bankerOffer(Cases cases);
+    public void showCases(Cases cases);
 }

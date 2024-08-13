@@ -8,12 +8,7 @@ package com.mycompany.deal.or.nodeal;
  *
  * @author rafae
  */
-public interface IGameUI
+public interface IcaseSelect 
 {
-    public void displayWelcomeMessage();
-    public void tutorial();
-    public String getInput();
-    public void displayExitMessage();
-    public void showCases(Cases cases);
+    public void selectCase(Cases cases);
 }
-

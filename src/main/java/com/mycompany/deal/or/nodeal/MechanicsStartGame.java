@@ -3,39 +3,38 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.mycompany.deal.or.nodeal;
+
 /**
  *
  * @author rafae
  */
-public class DealOrNoDealGame extends GameMechanics implements IGameStart
+public class MechanicsStartGame implements IGameStart
 {
-    private final Cases cases;
-//    MechanicsPlayRound Mplay = new MechanicsPlayRound();
-//    MechanicsCaseSelect Mselect = new MechanicsCaseSelect();
-//    MechanicsBanker Mbanker = new MechanicsBanker();
+    GameInputUI inputUI = new GameInputUI();
+    GameMessageUI messageUI = new GameMessageUI();
     
-    public DealOrNoDealGame()
-    {
-        cases = new Cases();
-    }
+    MechanicsCaseSelect Mselect = new MechanicsCaseSelect();
+    MechanicsBanker Mbanker = new MechanicsBanker();
+
+    private final Cases cases = new Cases();
     
     @Override
     public void startGame() 
     {   
         while(true)
         {
-            displayWelcomeMessage();
-            String response = getInput();
+            messageUI.displayWelcomeMessage();
+            String response = inputUI.getInput();
             
             if(response.equalsIgnoreCase("w"))
             {
-                selectCase(cases);
+                Mselect.selectCase(cases);
                 
                 while(GameMechanics.roundNum <= 5)
                 {
                     playRound(cases, roundNum);    
                     System.out.println("End of Round " + roundNum);
-                    bankerOffer(cases);
+                    Mbanker.bankerOffer(cases);
 
                     roundNum++;
                 }
@@ -43,12 +42,12 @@ public class DealOrNoDealGame extends GameMechanics implements IGameStart
             }
             else if(response.equalsIgnoreCase("t"))
             {
-                tutorial();
+                messageUI.tutorial();
                 continue;
             }
             else if(response.equalsIgnoreCase("x"))
             {
-                displayExitMessage();
+                messageUI.displayExitMessage();
                 break;
             }
             else
@@ -58,7 +57,7 @@ public class DealOrNoDealGame extends GameMechanics implements IGameStart
             }
             
             System.out.println("Your case " + playerCase + " contains $" + playerCaseValue);
-            displayExitMessage();
+            messageUI.displayExitMessage();
             break;
         }
     }

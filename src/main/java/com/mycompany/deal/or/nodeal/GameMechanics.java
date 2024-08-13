@@ -8,7 +8,7 @@ package com.mycompany.deal.or.nodeal;
  *
  * @author rafae
  */
-public class GameMechanics extends GameUI implements IGamePlay
+public class GameMechanics extends GameUI implements IplayRound, IcaseSelect, Ibanker
 {
     public static int playerCase;
     public static double playerCaseValue;
