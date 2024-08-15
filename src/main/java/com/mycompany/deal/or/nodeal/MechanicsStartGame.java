@@ -8,15 +8,16 @@ package com.mycompany.deal.or.nodeal;
  *
  * @author rafae
  */
-public class MechanicsStartGame implements IGameStart
+public class MechanicsStartGame extends MechanicsControl implements IGameStart
 {
     GameInputUI inputUI = new GameInputUI();
     GameMessageUI messageUI = new GameMessageUI();
     
     MechanicsCaseSelect Mselect = new MechanicsCaseSelect();
     MechanicsBanker Mbanker = new MechanicsBanker();
+    MechanicsPlayRound Mplay = new MechanicsPlayRound();
 
-    private final Cases cases = new Cases();
+//    private final Cases cases = new Cases();
     
     @Override
     public void startGame() 
@@ -32,7 +33,7 @@ public class MechanicsStartGame implements IGameStart
                 
                 while(GameMechanics.roundNum <= 5)
                 {
-                    playRound(cases, roundNum);    
+                    Mplay.playRound(cases, roundNum);    
                     System.out.println("End of Round " + roundNum);
                     Mbanker.bankerOffer(cases);
 

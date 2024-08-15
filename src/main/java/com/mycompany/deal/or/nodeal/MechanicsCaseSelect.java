@@ -8,11 +8,11 @@ package com.mycompany.deal.or.nodeal;
  *
  * @author rafae
  */
-public class MechanicsCaseSelect implements IcaseSelect
+public class MechanicsCaseSelect extends MechanicsControl implements IcaseSelect
 {   
-    public static int playerCase;
-    public static double playerCaseValue;
-    public static int roundNum = 1;
+//    public static int playerCase;
+//    public static double playerCaseValue;
+//    public static int roundNum = 1;
     
     GameCaseDisplayUI caseUI = new GameCaseDisplayUI();
     GameInputUI inputUI = new GameInputUI();

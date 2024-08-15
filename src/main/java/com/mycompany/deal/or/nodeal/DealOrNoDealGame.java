@@ -7,12 +7,15 @@ package com.mycompany.deal.or.nodeal;
  *
  * @author rafae
  */
-public class DealOrNoDealGame extends GameMechanics implements IGameStart
+public class DealOrNoDealGame extends MechanicsControl implements IGameStart
 {
-    private final Cases cases;
-//    MechanicsPlayRound Mplay = new MechanicsPlayRound();
-//    MechanicsCaseSelect Mselect = new MechanicsCaseSelect();
-//    MechanicsBanker Mbanker = new MechanicsBanker();
+    GameMessageUI messageUI = new GameMessageUI();
+    GameCaseDisplayUI caseUI = new GameCaseDisplayUI();
+    GameInputUI inputUI = new GameInputUI();
+    
+    MechanicsPlayRound Mplay = new MechanicsPlayRound();
+    MechanicsCaseSelect Mselect = new MechanicsCaseSelect();
+    MechanicsBanker Mbanker = new MechanicsBanker();
     
     public DealOrNoDealGame()
     {
@@ -24,18 +27,18 @@ public class DealOrNoDealGame extends GameMechanics implements IGameStart
     {   
         while(true)
         {
-            displayWelcomeMessage();
-            String response = getInput();
+            messageUI.displayWelcomeMessage();
+            String response = inputUI.getInput();
             
             if(response.equalsIgnoreCase("w"))
             {
-                selectCase(cases);
+                Mselect.selectCase(cases);
                 
                 while(GameMechanics.roundNum <= 5)
                 {
-                    playRound(cases, roundNum);    
+                    Mplay.playRound(cases, roundNum);    
                     System.out.println("End of Round " + roundNum);
-                    bankerOffer(cases);
+                    Mbanker.bankerOffer(cases);
 
                     roundNum++;
                 }
@@ -43,12 +46,12 @@ public class DealOrNoDealGame extends GameMechanics implements IGameStart
             }
             else if(response.equalsIgnoreCase("t"))
             {
-                tutorial();
+                messageUI.tutorial();
                 continue;
             }
             else if(response.equalsIgnoreCase("x"))
             {
-                displayExitMessage();
+                messageUI.displayExitMessage();
                 break;
             }
             else
@@ -58,7 +61,7 @@ public class DealOrNoDealGame extends GameMechanics implements IGameStart
             }
             
             System.out.println("Your case " + playerCase + " contains $" + playerCaseValue);
-            displayExitMessage();
+            messageUI.displayExitMessage();
             break;
         }
     }
