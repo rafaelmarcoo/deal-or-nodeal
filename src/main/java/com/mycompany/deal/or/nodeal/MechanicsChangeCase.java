@@ -8,13 +8,13 @@ package com.mycompany.deal.or.nodeal;
  *
  * @author rcman
  */
-public class MechanicsChangeCase extends MechanicsControl
+public class MechanicsChangeCase extends MechanicsControl implements IChangeCase
 {
     GameCaseDisplayUI caseUI = new GameCaseDisplayUI();
     GameInputUI inputUI = new GameInputUI();
     GameMessageUI messageUI = new GameMessageUI();
 
-    
+    @Override
     public void changeCase(Cases cases)
     {
         System.out.println("\n************************ Select a new case! ************************\n");
@@ -23,7 +23,7 @@ public class MechanicsChangeCase extends MechanicsControl
         
         while(true)
         {
-            System.out.print("Please select your new case! => ");
+            System.out.print("Please select your new case! (enter 'b' to back out) => ");
             String input = inputUI.getInput(); 
             
             if(input.equalsIgnoreCase("x"))
@@ -34,7 +34,8 @@ public class MechanicsChangeCase extends MechanicsControl
             
             if(input.equalsIgnoreCase("b"))
             {
-                
+                System.out.println();
+                break;
             }
             
             try

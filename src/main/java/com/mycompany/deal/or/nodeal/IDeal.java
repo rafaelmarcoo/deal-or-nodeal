@@ -6,9 +6,9 @@ package com.mycompany.deal.or.nodeal;
 
 /**
  *
- * @author rafae
+ * @author rcman
  */
-public interface IBanker
+public interface IDeal 
 {
-    public double bankerOffer(Cases cases);
+    public void dealornodeal(double offer);
 }

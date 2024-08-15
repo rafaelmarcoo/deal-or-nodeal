@@ -17,6 +17,7 @@ public class MechanicsStartGame extends MechanicsControl implements IGameStart
     MechanicsBanker Mbanker = new MechanicsBanker();
     MechanicsPlayRound Mplay = new MechanicsPlayRound();
     MechanicsChangeCase Mchange = new MechanicsChangeCase();
+    MechanicsDeal Mdeal = new MechanicsDeal();
 
 //    private final Cases cases = new Cases();
     
@@ -32,23 +33,24 @@ public class MechanicsStartGame extends MechanicsControl implements IGameStart
             {
                 Mselect.selectCase(cases);
                 
-                while(roundNum <= 5)
+                while(roundNum < 5)
                 {
                     Mplay.playRound(cases, roundNum);    
                     
                     if(roundNum <= 2)
                     {
-                        System.out.println("You have a chance to change your case from Round 3!");
+                        System.out.println("You have a chance to change your case from the end Round 3!");
                     }
                       
                     System.out.println("End of Round " + roundNum);
-                    Mbanker.bankerOffer(cases);
+                    double offer = Mbanker.bankerOffer(cases);
+                    Mdeal.dealornodeal(offer);
                     
-                    if(roundNum >= 3)
+                    if(roundNum == 3 || roundNum == 4)
                     {
                         while(true)
                         {
-                            System.out.print("Having mixed feelings now? You can change your case! (y or n) = >");
+                            System.out.print("Having mixed feelings now? You can change your case! (y or n) => ");
                             response = inputUI.getInput();
 
                             if(response.equalsIgnoreCase("y"))
@@ -58,17 +60,18 @@ public class MechanicsStartGame extends MechanicsControl implements IGameStart
                             }
                             else if(response.equalsIgnoreCase("n"))
                             {
+                                System.out.println();
                                 break;
                             }
                             else
                             {
-                                System.out.println("Invalid!");
+                                System.out.println("Invalid!\n");
                             }
                         }
                     }
-                    
                     roundNum++;
                 }
+                //
                 
             }
             else if(response.equalsIgnoreCase("t"))

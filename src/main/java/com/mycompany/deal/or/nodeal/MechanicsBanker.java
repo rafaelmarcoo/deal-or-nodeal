@@ -13,7 +13,7 @@ public class MechanicsBanker extends MechanicsControl implements IBanker
     
     
     @Override
-    public void bankerOffer(Cases cases)
+    public double bankerOffer(Cases cases)
     {
         double totalValue = 0;
         double highestValue = 0;
@@ -31,20 +31,21 @@ public class MechanicsBanker extends MechanicsControl implements IBanker
                 
         double avgTot = totalValue / numCases;
         
-        double multiplier = 0.20 + (roundNum * 0.05);
-        if(multiplier > 0.70)
-            multiplier = 0.70;
+        double multiplier = 0.30 + (roundNum * 0.10);
+        if(multiplier > 0.80)
+            multiplier = 0.80;
         
         double risk = highestValue / totalValue;
-        double offer = avgTot * multiplier * (1 - (risk * 0.5));
+        double offer = avgTot * multiplier * (1 - (risk * 0.25));
         
         double roundedOffer = Math.round(offer * 100.0) / 100.0;
         
-        System.out.println("Banker's offer is $" + roundedOffer + "\n"
-        + "Deal? or no deal? => \n");
+        System.out.println("Banker's offer is $" + roundedOffer + "!\n");
         
         
         
         System.out.println("Your case " + playerCase + " contains: $" + playerCaseValue);
+        
+        return roundedOffer;
     }
 }
