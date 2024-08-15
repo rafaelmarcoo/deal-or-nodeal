@@ -8,7 +8,7 @@ package com.mycompany.deal.or.nodeal;
  *
  * @author rafae
  */
-public interface Ibanker
+public interface IBanker
 {
     public void bankerOffer(Cases cases);
 }

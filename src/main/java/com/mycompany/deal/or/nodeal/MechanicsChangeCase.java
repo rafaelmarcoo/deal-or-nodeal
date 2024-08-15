@@ -6,34 +6,35 @@ package com.mycompany.deal.or.nodeal;
 
 /**
  *
- * @author rafae
+ * @author rcman
  */
-public class MechanicsCaseSelect extends MechanicsControl implements ICaseSelect
-{   
-//    public static int playerCase;
-//    public static double playerCaseValue;
-//    public static int roundNum = 1;
-    
+public class MechanicsChangeCase extends MechanicsControl
+{
     GameCaseDisplayUI caseUI = new GameCaseDisplayUI();
     GameInputUI inputUI = new GameInputUI();
     GameMessageUI messageUI = new GameMessageUI();
+
     
-    @Override
-    public void selectCase(Cases cases) 
+    public void changeCase(Cases cases)
     {
-        System.out.println("\n************************ Pick your case! ************************\n");
-        System.out.println("Enter 'x' to quit anytime!");
+        System.out.println("\n************************ Select a new case! ************************\n");
+        System.out.println("Enter 'x' to quit the game anytime!");
         caseUI.showCases(cases);
         
         while(true)
         {
-            System.out.print("Please select a case to keep for the game! => ");
-            String input = inputUI.getInput();
+            System.out.print("Please select your new case! => ");
+            String input = inputUI.getInput(); 
             
             if(input.equalsIgnoreCase("x"))
             {
                 messageUI.displayExitMessage();
                 System.exit(0);
+            }
+            
+            if(input.equalsIgnoreCase("b"))
+            {
+                
             }
             
             try
@@ -45,11 +46,20 @@ public class MechanicsCaseSelect extends MechanicsControl implements ICaseSelect
                 }
                 else
                 {
+                    int temp = playerCase;
+                    double tempValue = playerCaseValue;
+                    cases.getCases().put(temp, tempValue);
+                            
                     playerCase = caseNum;
                     playerCaseValue = cases.getCases().get(caseNum);
                     cases.getCases().remove(caseNum);
-                    System.out.println("You have selected Case " + playerCase + "!");
+                    System.out.println("You have chosen Case " + playerCase + "!");
                     System.out.println();
+                    
+                    for(int i : cases.getCases().keySet())
+                    {
+                        System.out.println("Case " + i + " - Value: $" + cases.getCases().get(i));
+                    }
                     break;
                 }
             }

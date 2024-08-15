@@ -8,7 +8,7 @@ package com.mycompany.deal.or.nodeal;
  *
  * @author rafae
  */
-public class MechanicsPlayRound implements IplayRound
+public class MechanicsPlayRound implements IPlayRound
 {
     GameCaseDisplayUI caseUI = new GameCaseDisplayUI();
     GameInputUI inputUI = new GameInputUI();

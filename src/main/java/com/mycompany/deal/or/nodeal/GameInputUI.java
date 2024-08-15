@@ -10,7 +10,7 @@ import java.util.Scanner;
  *
  * @author rafae
  */
-public class GameInputUI implements IinputUI
+public class GameInputUI implements IInputUI
 {
     @Override
     public String getInput()

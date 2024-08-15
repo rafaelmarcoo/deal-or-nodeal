@@ -16,6 +16,7 @@ public class MechanicsStartGame extends MechanicsControl implements IGameStart
     MechanicsCaseSelect Mselect = new MechanicsCaseSelect();
     MechanicsBanker Mbanker = new MechanicsBanker();
     MechanicsPlayRound Mplay = new MechanicsPlayRound();
+    MechanicsChangeCase Mchange = new MechanicsChangeCase();
 
 //    private final Cases cases = new Cases();
     
@@ -31,12 +32,41 @@ public class MechanicsStartGame extends MechanicsControl implements IGameStart
             {
                 Mselect.selectCase(cases);
                 
-                while(GameMechanics.roundNum <= 5)
+                while(roundNum <= 5)
                 {
                     Mplay.playRound(cases, roundNum);    
+                    
+                    if(roundNum <= 2)
+                    {
+                        System.out.println("You have a chance to change your case from Round 3!");
+                    }
+                      
                     System.out.println("End of Round " + roundNum);
                     Mbanker.bankerOffer(cases);
+                    
+                    if(roundNum >= 3)
+                    {
+                        while(true)
+                        {
+                            System.out.print("Having mixed feelings now? You can change your case! (y or n) = >");
+                            response = inputUI.getInput();
 
+                            if(response.equalsIgnoreCase("y"))
+                            {
+                                Mchange.changeCase(cases);
+                                break;
+                            }
+                            else if(response.equalsIgnoreCase("n"))
+                            {
+                                break;
+                            }
+                            else
+                            {
+                                System.out.println("Invalid!");
+                            }
+                        }
+                    }
+                    
                     roundNum++;
                 }
                 

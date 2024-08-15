@@ -8,7 +8,7 @@ package com.mycompany.deal.or.nodeal;
  *
  * @author rafae
  */
-public interface IplayRound 
+public interface IPlayRound 
 {
     public void playRound(Cases cases, int roundNum);
 }

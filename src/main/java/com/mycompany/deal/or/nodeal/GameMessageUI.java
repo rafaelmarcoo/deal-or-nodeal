@@ -8,7 +8,7 @@ package com.mycompany.deal.or.nodeal;
  *
  * @author rafae
  */
-public class GameMessageUI implements ImessageUI
+public class GameMessageUI implements IMessageUI
 {
     @Override
     public void displayWelcomeMessage() 

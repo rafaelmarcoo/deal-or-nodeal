@@ -8,7 +8,7 @@ package com.mycompany.deal.or.nodeal;
  *
  * @author rafae
  */
-public interface IcaseDisplayUI 
+public interface ICaseDisplayUI 
 {
     public void showCases(Cases cases);
 }

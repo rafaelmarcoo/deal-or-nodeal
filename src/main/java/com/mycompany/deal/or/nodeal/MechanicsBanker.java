@@ -8,7 +8,7 @@ package com.mycompany.deal.or.nodeal;
  *
  * @author rafae
  */
-public class MechanicsBanker implements Ibanker
+public class MechanicsBanker extends MechanicsControl implements IBanker
 {
     
     
@@ -16,16 +16,35 @@ public class MechanicsBanker implements Ibanker
     public void bankerOffer(Cases cases)
     {
         double totalValue = 0;
+        double highestValue = 0;
+        int numCases = cases.getCases().size();
+        
         for(double d : cases.getCases().values())
         {
             totalValue += d;
+            
+            if(d > highestValue)
+            {
+                highestValue = d;
+            }
         }
+                
+        double avgTot = totalValue / numCases;
         
-        double avgTot = totalValue / cases.getCases().size();
-        double offer = avgTot * 0.30;
+        double multiplier = 0.20 + (roundNum * 0.05);
+        if(multiplier > 0.70)
+            multiplier = 0.70;
+        
+        double risk = highestValue / totalValue;
+        double offer = avgTot * multiplier * (1 - (risk * 0.5));
+        
         double roundedOffer = Math.round(offer * 100.0) / 100.0;
         
         System.out.println("Banker's offer is $" + roundedOffer + "\n"
         + "Deal? or no deal? => \n");
+        
+        
+        
+        System.out.println("Your case " + playerCase + " contains: $" + playerCaseValue);
     }
 }

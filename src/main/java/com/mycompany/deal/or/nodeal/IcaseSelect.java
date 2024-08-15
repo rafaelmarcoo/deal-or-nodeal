@@ -8,7 +8,7 @@ package com.mycompany.deal.or.nodeal;
  *
  * @author rafae
  */
-public interface IcaseSelect 
+public interface ICaseSelect 
 {
     public void selectCase(Cases cases);
 }

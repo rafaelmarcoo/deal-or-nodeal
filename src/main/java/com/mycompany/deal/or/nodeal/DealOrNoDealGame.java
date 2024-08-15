@@ -7,62 +7,11 @@ package com.mycompany.deal.or.nodeal;
  *
  * @author rafae
  */
-public class DealOrNoDealGame extends MechanicsControl implements IGameStart
-{
-    GameMessageUI messageUI = new GameMessageUI();
-    GameCaseDisplayUI caseUI = new GameCaseDisplayUI();
-    GameInputUI inputUI = new GameInputUI();
-    
-    MechanicsPlayRound Mplay = new MechanicsPlayRound();
-    MechanicsCaseSelect Mselect = new MechanicsCaseSelect();
-    MechanicsBanker Mbanker = new MechanicsBanker();
-    
-    public DealOrNoDealGame()
+public class DealOrNoDealGame extends MechanicsControl
+{   
+    public static void main(String[] args) 
     {
-        cases = new Cases();
-    }
-    
-    @Override
-    public void startGame() 
-    {   
-        while(true)
-        {
-            messageUI.displayWelcomeMessage();
-            String response = inputUI.getInput();
-            
-            if(response.equalsIgnoreCase("w"))
-            {
-                Mselect.selectCase(cases);
-                
-                while(GameMechanics.roundNum <= 5)
-                {
-                    Mplay.playRound(cases, roundNum);    
-                    System.out.println("End of Round " + roundNum);
-                    Mbanker.bankerOffer(cases);
-
-                    roundNum++;
-                }
-                
-            }
-            else if(response.equalsIgnoreCase("t"))
-            {
-                messageUI.tutorial();
-                continue;
-            }
-            else if(response.equalsIgnoreCase("x"))
-            {
-                messageUI.displayExitMessage();
-                break;
-            }
-            else
-            {
-                System.out.println("\nInvalid input!");
-                continue;
-            }
-            
-            System.out.println("Your case " + playerCase + " contains $" + playerCaseValue);
-            messageUI.displayExitMessage();
-            break;
-        }
+        MechanicsStartGame Mgame = new MechanicsStartGame();
+        Mgame.startGame();
     }
 }

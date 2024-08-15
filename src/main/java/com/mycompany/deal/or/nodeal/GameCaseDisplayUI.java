@@ -8,7 +8,7 @@ package com.mycompany.deal.or.nodeal;
  *
  * @author rafae
  */
-public class GameCaseDisplayUI implements IcaseDisplayUI
+public class GameCaseDisplayUI implements ICaseDisplayUI
 {
     @Override
     public void showCases(Cases cases)

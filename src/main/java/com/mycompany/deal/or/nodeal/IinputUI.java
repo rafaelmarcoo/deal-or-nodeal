@@ -8,7 +8,7 @@ package com.mycompany.deal.or.nodeal;
  *
  * @author rafae
  */
-public interface IinputUI 
+public interface IInputUI 
 {
     public String getInput();
 }

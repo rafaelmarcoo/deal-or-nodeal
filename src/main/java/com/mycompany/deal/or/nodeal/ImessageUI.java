@@ -8,7 +8,7 @@ package com.mycompany.deal.or.nodeal;
  *
  * @author rafae
  */
-public interface ImessageUI 
+public interface IMessageUI 
 {
     public void displayWelcomeMessage();
     public void tutorial();
