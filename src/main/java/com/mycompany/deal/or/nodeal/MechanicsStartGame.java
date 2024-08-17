@@ -18,6 +18,7 @@ public class MechanicsStartGame extends MechanicsControl implements IGameStart
     MechanicsPlayRound Mplay = new MechanicsPlayRound();
     MechanicsChangeCase Mchange = new MechanicsChangeCase();
     MechanicsDeal Mdeal = new MechanicsDeal();
+    MechanicsLastPlay Mlast = new MechanicsLastPlay();
 
 //    private final Cases cases = new Cases();
     
@@ -33,13 +34,13 @@ public class MechanicsStartGame extends MechanicsControl implements IGameStart
             {
                 Mselect.selectCase(cases);
                 
-                while(roundNum < 5)
+                while(roundNum <= 4)
                 {
                     Mplay.playRound(cases, roundNum);    
                     
                     if(roundNum <= 2)
                     {
-                        System.out.println("You have a chance to change your case from the end Round 3!");
+                        System.out.println("** You have a chance to change your case from the end Round 3! **");
                     }
                       
                     System.out.println("End of Round " + roundNum);
@@ -71,7 +72,12 @@ public class MechanicsStartGame extends MechanicsControl implements IGameStart
                     }
                     roundNum++;
                 }
-                //
+                
+                if(roundNum == 5)
+                {
+                    Mlast.playRound(cases, roundNum);
+                    Mlast.lastPlay(cases);
+                }
                 
             }
             else if(response.equalsIgnoreCase("t"))
@@ -90,7 +96,7 @@ public class MechanicsStartGame extends MechanicsControl implements IGameStart
                 continue;
             }
             
-            System.out.println("Your case " + playerCase + " contains $" + playerCaseValue);
+//            System.out.println("Your case " + playerCase + " contains $" + playerCaseValue);
             messageUI.displayExitMessage();
             break;
         }

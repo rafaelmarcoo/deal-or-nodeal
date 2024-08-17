@@ -30,6 +30,7 @@ public class GameMessageUI implements IMessageUI
         System.out.println(" - After each round, the banker will offer you a cash amount to quit the game.");
         System.out.println(" - You can choose to 'Deal' and take the offer or 'No Deal' and continue playing");
         System.out.println(" - You have the chance to change cases from the end of round 3 if you ever feel like doing so!");
+        System.out.println(" - In the last play, where there is only one case left, you have the choice to keep your case or swap it with the last one!");
         System.out.println("\n***** Good luck and have fun! *****");
         System.out.println("\n--------------------------------------------------"
                 + "----------------------------------------------------------------------------------");

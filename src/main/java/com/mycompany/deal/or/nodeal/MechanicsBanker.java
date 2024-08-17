@@ -44,7 +44,7 @@ public class MechanicsBanker extends MechanicsControl implements IBanker
         
         
         
-        System.out.println("Your case " + playerCase + " contains: $" + playerCaseValue);
+//        System.out.println("Your case " + playerCase + " contains: $" + playerCaseValue);
         
         return roundedOffer;
     }

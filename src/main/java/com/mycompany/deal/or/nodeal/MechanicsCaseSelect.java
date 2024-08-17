@@ -55,7 +55,7 @@ public class MechanicsCaseSelect extends MechanicsControl implements ICaseSelect
             }
             catch(NumberFormatException E)
             {
-                System.out.println(E + ". Invalid input! Only case numbers!\n");
+                System.out.println("Invalid input! Only case numbers!\n");
             }
         }
     }

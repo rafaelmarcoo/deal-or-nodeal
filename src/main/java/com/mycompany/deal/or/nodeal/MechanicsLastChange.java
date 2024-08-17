@@ -8,19 +8,17 @@ package com.mycompany.deal.or.nodeal;
  *
  * @author rcman
  */
-public class MechanicsChangeCase extends MechanicsControl implements IChangeCase
+public class MechanicsLastChange extends MechanicsControl implements IChangeCase
 {
-    GameCaseDisplayUI caseUI = new GameCaseDisplayUI();
     GameInputUI inputUI = new GameInputUI();
     GameMessageUI messageUI = new GameMessageUI();
+    GameCaseDisplayUI caseUI = new GameCaseDisplayUI();
+    
+    GameCompareLastUI compareUI = new GameCompareLastUI();
 
     @Override
     public void changeCase(Cases cases)
     {
-        System.out.println("\n************************ Select a new case! ************************\n");
-        System.out.println("Enter 'x' to quit the game anytime!");
-        caseUI.showCases(cases);
-        
         while(true)
         {
             System.out.print("Please select your new case! (enter 'b' to back out) => ");
@@ -56,18 +54,17 @@ public class MechanicsChangeCase extends MechanicsControl implements IChangeCase
                     cases.getCases().remove(caseNum);
                     System.out.println("You have chosen Case " + playerCase + "!");
                     System.out.println();
-                    
-//                    for(int i : cases.getCases().keySet())
-//                    {
-//                        System.out.println("Case " + i + " - Value: $" + cases.getCases().get(i));
-//                    }
+                    System.out.println("Your old case " + temp + " contains $" + tempValue);
+                    System.out.println("\nYour case " + playerCase + " contains $" + playerCaseValue + "\n");
+                    compareUI.compareValues(playerCaseValue, tempValue);
                     break;
                 }
             }
             catch(NumberFormatException E)
             {
-                System.out.println("Invalid input! Only case numbers!\n");
+                System.out.println(E + ". Invalid input! Only case numbers!\n");
             }
         }
     }
+    
 }

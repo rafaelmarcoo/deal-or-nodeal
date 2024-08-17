@@ -12,6 +12,7 @@ public class MechanicsDeal extends MechanicsControl implements IDeal
 {
     GameInputUI inputUI = new GameInputUI();
     GameMessageUI messageUI = new GameMessageUI();
+    GameCompareUI compareUI = new GameCompareUI();
     
     @Override
     public void dealornodeal(double offer)
@@ -25,6 +26,8 @@ public class MechanicsDeal extends MechanicsControl implements IDeal
             {
                 System.out.println("\nCongratulations! You will take home $" + offer + "!");
                 System.out.println("Your case " + playerCase + " contains $" + playerCaseValue);
+                System.out.println();
+                compareUI.compareValues(offer, playerCaseValue);
                 messageUI.displayExitMessage();
                 System.exit(0);
             }
