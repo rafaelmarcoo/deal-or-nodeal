@@ -8,7 +8,7 @@ package com.mycompany.deal.or.nodeal;
  *
  * @author rcman
  */
-public class GameCompareUI extends MechanicsControl implements ICompareValues
+public class GameCompareUI extends MechanicsControl implements ICompareValuesUI
 {
     @Override
     public void compareValues(double playerValue, double otherValue)

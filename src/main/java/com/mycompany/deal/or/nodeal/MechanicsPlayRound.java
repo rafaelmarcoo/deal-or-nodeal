@@ -13,6 +13,8 @@ public class MechanicsPlayRound implements IPlayRound
     GameCaseDisplayUI caseUI = new GameCaseDisplayUI();
     GameInputUI inputUI = new GameInputUI();
     GameMessageUI messageUI = new GameMessageUI();
+    GameGoodCommentUI goodUI = new GameGoodCommentUI();
+    GameBadCommentUI badUI = new GameBadCommentUI();
     
     @Override
     public void playRound(Cases cases, int roundNum) 
@@ -56,6 +58,17 @@ public class MechanicsPlayRound implements IPlayRound
                     {
                         System.out.println("-------- Case " + caseNum
                         + " contains: $" + cases.getCases().get(caseNum) + " --------");
+                        
+                        if(cases.getCases().get(caseNum) < 50000.00)
+                        {
+                            String comment = goodUI.comment();
+                            System.out.println(comment);
+                        }
+                        else
+                        {
+                            String comment = badUI.comment();
+                            System.out.println(comment);
+                        }
 
                         cases.getCases().remove(caseNum);
 

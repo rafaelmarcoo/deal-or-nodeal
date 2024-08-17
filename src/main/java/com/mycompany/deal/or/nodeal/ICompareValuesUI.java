@@ -8,7 +8,7 @@ package com.mycompany.deal.or.nodeal;
  *
  * @author rcman
  */
-public interface ICompareValues 
+public interface ICompareValuesUI 
 {
     public void compareValues(double playerValue, double otherValue);
 }
