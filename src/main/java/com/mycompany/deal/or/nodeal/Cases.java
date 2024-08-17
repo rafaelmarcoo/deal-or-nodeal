@@ -10,8 +10,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Random;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -19,7 +17,7 @@ import java.util.logging.Logger;
  */
 
 
-public class Cases 
+public class Cases
 {
     private HashMap<Integer, Double> cases;
     private int[] caseNums;
@@ -94,16 +92,15 @@ public class Cases
         return totalCases;
     }
     
-    
-    public static void main(String[] args) 
-    {   
-        Cases cases = new Cases();
-        
-        for(int i : cases.getCases().keySet())
-        {
-            System.out.println("Case " + i + " - Value: $" + cases.getCases().get(i));
-        }
-    }
+//    public static void main(String[] args) 
+//    {   
+//        Cases cases = new Cases();
+//        
+//        for(int i : cases.getCases().keySet())
+//        {
+//            System.out.println("Case " + i + " - Value: $" + cases.getCases().get(i));
+//        }
+//    }
 }
 
 

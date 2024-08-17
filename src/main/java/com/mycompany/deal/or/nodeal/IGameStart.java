@@ -1,4 +1,4 @@
- /*
+/*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
@@ -8,11 +8,7 @@ package com.mycompany.deal.or.nodeal;
  *
  * @author rafae
  */
-public class Main 
+public interface IGameStart 
 {
-    public static void main(String[] args) 
-    {
-        DealOrNoDealGame game = new DealOrNoDealGame();
-        game.startGame();
-    }
+    public void startGame();
 }

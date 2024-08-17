@@ -3,15 +3,19 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.mycompany.deal.or.nodeal;
+
+import java.util.Scanner;
+
 /**
  *
  * @author rafae
  */
-public class DealOrNoDealGame extends MechanicsControl
-{   
-    public static void main(String[] args) 
+public class GameInputUI implements IInputUI
+{
+    @Override
+    public String getInput()
     {
-        MechanicsStartGame Mgame = new MechanicsStartGame();
-        Mgame.startGame();
+        Scanner scan = new Scanner(System.in);
+        return scan.nextLine().trim();
     }
 }
