@@ -107,6 +107,7 @@ public class MechanicsStartGame extends MechanicsControl implements IGameStart
             }
             
             folog.FileOutLog(Player.firstName, Player.lastName, "Game Finished.\n\n");
+            foerror.FileOutLog(Player.firstName, Player.lastName, "Game Finished.\n\n");
             messageUI.displayExitMessage();
             break;
         }

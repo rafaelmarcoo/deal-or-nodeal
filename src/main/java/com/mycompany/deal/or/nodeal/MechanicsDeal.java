@@ -34,8 +34,9 @@ public class MechanicsDeal extends MechanicsControl implements IDeal
                 compareUI.compareValues(offer, playerCaseValue);
                 
                 folist.FileOutListWin(Player.firstName, Player.lastName, offer);
-                folog.FileOutLog(Player.firstName, Player.lastName, "Accepted banker's offer of $\n\n" + offer);
+                folog.FileOutLog(Player.firstName, Player.lastName, "Accepted banker's offer of $" + offer);
                 folog.FileOutLog(Player.firstName, Player.lastName, "Game Finished.\n\n");
+                foerror.FileOutLog(Player.firstName, Player.lastName, "Game Finished.\n\n");
                 
                 messageUI.displayExitMessage();
                 System.exit(0);
