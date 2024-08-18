@@ -4,7 +4,6 @@
  */
 package com.mycompany.deal.or.nodeal;
 
-
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintWriter;
@@ -14,9 +13,9 @@ import java.time.format.DateTimeFormatter;
 
 /**
  *
- * @author rcman
+ * @author rafae
  */
-public class FileOutGameLog implements IFileOut
+public class FileOutErrorLog implements IFileOut
 {
     @Override
     public void FileOutLog(String firstName, String lastName, String action)
@@ -29,10 +28,10 @@ public class FileOutGameLog implements IFileOut
         
         try
         {
-            FileOutputStream fos = new FileOutputStream("./resources/GameLogs/" + date + "_" +
-                    firstName + "_" + lastName + "_Log.txt", true);
+            FileOutputStream fos = new FileOutputStream("./resources/ErrorLogs/" + date + "_" +
+                    firstName + "_" + lastName + "_Error_Logs.txt", true);
             PrintWriter pw = new PrintWriter(fos);
-            pw.println(timeNow + " || Action: " + action);
+            pw.println(timeNow + " || Error: " + action);
             pw.close();
         }
         catch(FileNotFoundException E)

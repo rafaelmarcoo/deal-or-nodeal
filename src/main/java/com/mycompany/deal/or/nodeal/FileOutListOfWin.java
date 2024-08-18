@@ -13,7 +13,7 @@ import java.time.LocalDate;
  *
  * @author rcman
  */
-public class FileOutListOfWin 
+public class FileOutListOfWin
 {
     public void FileOutListWin(String firstName, String lastName, double winnings)
     {

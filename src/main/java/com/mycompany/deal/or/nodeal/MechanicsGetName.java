@@ -12,7 +12,7 @@ public class MechanicsGetName implements IGetName
 {
     GameInputUI inputUI = new GameInputUI();
     GameMessageUI messageUI = new GameMessageUI();
-    
+        
     @Override
     public String getFirstName()
     {

@@ -16,6 +16,7 @@ public class MechanicsDeal extends MechanicsControl implements IDeal
     
     FileOutListOfWin folist = new FileOutListOfWin();
     FileOutGameLog folog = new FileOutGameLog();
+    FileOutErrorLog foerror = new FileOutErrorLog();
     
     @Override
     public void dealornodeal(double offer)
@@ -32,26 +33,28 @@ public class MechanicsDeal extends MechanicsControl implements IDeal
                 System.out.println();
                 compareUI.compareValues(offer, playerCaseValue);
                 
-                folist.FileOutListWin(player.firstName, player.lastName, offer);
-                folog.FileOutLog(player.firstName, player.lastName, "Accepted banker's offer of $" + offer);
+                folist.FileOutListWin(Player.firstName, Player.lastName, offer);
+                folog.FileOutLog(Player.firstName, Player.lastName, "Accepted banker's offer of $\n\n" + offer);
+                folog.FileOutLog(Player.firstName, Player.lastName, "Game Finished.\n\n");
                 
                 messageUI.displayExitMessage();
                 System.exit(0);
             }
             else if(response.equalsIgnoreCase("n"))
             {
-                folog.FileOutLog(player.firstName, player.lastName, "Rejected banker's offer of $" + offer);
+                folog.FileOutLog(Player.firstName, Player.lastName, "Rejected banker's offer of $" + offer);
                 System.out.println();
                 break;
             }
             else if(response.equalsIgnoreCase("x"))
             {
-                folog.FileOutLog(player.firstName, player.lastName, "User quit game.");
+                folog.FileOutLog(Player.firstName, Player.lastName, "User quit game.");
                 messageUI.displayExitMessage();
                 System.exit(0);
             }
             else
             {
+                foerror.FileOutLog(Player.firstName, Player.lastName, "Invalid! ('d' or 'n' only!) - MDeal");
                 System.out.println("Invalid! ('d' or 'n' only!)\n");
             }
         }

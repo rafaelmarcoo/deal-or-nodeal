@@ -22,9 +22,8 @@ public class MechanicsStartGame extends MechanicsControl implements IGameStart
     MechanicsGetName Mname = new MechanicsGetName();
     
     FileOutGameLog folog = new FileOutGameLog();
-   
-//    public static Player player;
-    
+    FileOutErrorLog foerror = new FileOutErrorLog();
+       
     @Override
     public void startGame() 
     {   
@@ -76,6 +75,7 @@ public class MechanicsStartGame extends MechanicsControl implements IGameStart
                             }
                             else
                             {
+                                foerror.FileOutLog(firstName, lastName, "Invalid input - Swapping Cases");
                                 System.out.println("Invalid!\n");
                             }
                         }
@@ -96,7 +96,7 @@ public class MechanicsStartGame extends MechanicsControl implements IGameStart
             }
             else if(response.equalsIgnoreCase("x"))
             {
-                folog.FileOutLog(player.firstName, player.lastName, "User quit game.");
+                folog.FileOutLog(Player.firstName, Player.lastName, "User quit game.\n\n");
                 messageUI.displayExitMessage();
                 break;
             }
@@ -106,7 +106,7 @@ public class MechanicsStartGame extends MechanicsControl implements IGameStart
                 continue;
             }
             
-            folog.FileOutLog(player.firstName, player.lastName, "Game Finished.\n\n");
+            folog.FileOutLog(Player.firstName, Player.lastName, "Game Finished.\n\n");
             messageUI.displayExitMessage();
             break;
         }

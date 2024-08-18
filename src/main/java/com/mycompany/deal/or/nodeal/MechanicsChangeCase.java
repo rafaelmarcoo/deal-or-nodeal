@@ -15,6 +15,7 @@ public class MechanicsChangeCase extends MechanicsControl implements IChangeCase
     GameMessageUI messageUI = new GameMessageUI();
     
     FileOutGameLog folog = new FileOutGameLog();
+    FileOutErrorLog foerror = new FileOutErrorLog();
 
     @Override
     public void changeCase(Cases cases)
@@ -30,14 +31,14 @@ public class MechanicsChangeCase extends MechanicsControl implements IChangeCase
             
             if(input.equalsIgnoreCase("x"))
             {
-                folog.FileOutLog(player.firstName, player.lastName, "User quit game.");
+                folog.FileOutLog(Player.firstName, Player.lastName, "User quit game.\n\n");
                 messageUI.displayExitMessage();
                 System.exit(0);
             }
             
             if(input.equalsIgnoreCase("b"))
             {                
-                folog.FileOutLog(player.firstName, player.lastName, "Backed out from swapping case.");
+                folog.FileOutLog(Player.firstName, Player.lastName, "Backed out from swapping case.");
                 System.out.println();
                 break;
             }
@@ -48,6 +49,7 @@ public class MechanicsChangeCase extends MechanicsControl implements IChangeCase
                 if(caseNum <= 0 || caseNum > cases.getCaseNums().length)
                 {
                     System.out.println("Invalid case number! Please try again!\n");
+                    foerror.FileOutLog(Player.firstName, Player.lastName, "Invalid case number! - ChangeCase");
                 }
                 else
                 {
@@ -66,13 +68,14 @@ public class MechanicsChangeCase extends MechanicsControl implements IChangeCase
 //                        System.out.println("Case " + i + " - Value: $" + cases.getCases().get(i));
 //                    }
 
-                    folog.FileOutLog(player.firstName, player.lastName, "Swapped case " + temp + " with case " + caseNum);
+                    folog.FileOutLog(Player.firstName, Player.lastName, "Swapped case " + temp + " with case " + caseNum);
                     
                     break;
                 }
             }
             catch(NumberFormatException E)
             {
+                foerror.FileOutLog(Player.firstName, Player.lastName, "Invalid input! Only case numbers! - MChangeCase");
                 System.out.println("Invalid input! Only case numbers!\n");
             }
         }

@@ -42,7 +42,7 @@ public class MechanicsBanker extends MechanicsControl implements IBanker
         
         System.out.println("Banker's offer is $" + roundedOffer + "!\n");
         
-        folog.FileOutLog(player.firstName, player.lastName, "Banker offered $" + roundedOffer);
+        folog.FileOutLog(Player.firstName, Player.lastName, "Banker offered $" + roundedOffer);
         
 //        System.out.println("Your case " + playerCase + " contains: $" + playerCaseValue);
         

@@ -19,6 +19,7 @@ public class MechanicsCaseSelect extends MechanicsControl implements ICaseSelect
     GameMessageUI messageUI = new GameMessageUI();
     
     FileOutGameLog folog = new FileOutGameLog();
+    FileOutErrorLog foerror = new FileOutErrorLog();
     
     @Override
     public void selectCase(Cases cases) 
@@ -34,7 +35,7 @@ public class MechanicsCaseSelect extends MechanicsControl implements ICaseSelect
             
             if(input.equalsIgnoreCase("x"))
             {
-                folog.FileOutLog(player.firstName, player.lastName, "User quit game.");
+                folog.FileOutLog(Player.firstName, Player.lastName, "User quit game.\n\n");
                 messageUI.displayExitMessage();
                 System.exit(0);
             }
@@ -44,6 +45,7 @@ public class MechanicsCaseSelect extends MechanicsControl implements ICaseSelect
                 int caseNum = Integer.parseInt(input);
                 if(caseNum <= 0 || caseNum > cases.getCaseNums().length)
                 {
+                    foerror.FileOutLog(Player.firstName, Player.lastName, "Invalid case number! - MCaseSelect");
                     System.out.println("Invalid case number! Please try again!\n");
                 }
                 else
@@ -54,13 +56,14 @@ public class MechanicsCaseSelect extends MechanicsControl implements ICaseSelect
                     System.out.println("You have selected Case " + playerCase + "!");
                     System.out.println();
                     
-                    folog.FileOutLog(player.firstName, player.lastName, "Selected case " + playerCase + " for the first time.");
+                    folog.FileOutLog(Player.firstName, Player.lastName, "Selected case " + playerCase + " for the first time.");
                     
                     break;
                 }
             }
             catch(NumberFormatException E)
             {
+                foerror.FileOutLog(Player.firstName, Player.lastName, "Invalid input! - MCaseSelect");
                 System.out.println("Invalid input! Only case numbers!\n");
             }
         }

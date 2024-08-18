@@ -17,6 +17,7 @@ public class MechanicsPlayRound extends MechanicsControl implements IPlayRound
     GameBadCommentUI badUI = new GameBadCommentUI();
     
     FileOutGameLog folog = new FileOutGameLog();
+    FileOutErrorLog foerror = new FileOutErrorLog();
     
     @Override
     public void playRound(Cases cases, int roundNum) 
@@ -27,7 +28,7 @@ public class MechanicsPlayRound extends MechanicsControl implements IPlayRound
         System.out.println("************************ Round " + roundNum + "! ************************");
         System.out.println("\nEnter 'x' to quit anytime!");
         
-        folog.FileOutLog(player.firstName, player.lastName, "Start of Round " + roundNum);
+        folog.FileOutLog(Player.firstName, Player.lastName, "Start of Round " + roundNum);
         
         while(count < 5)
         {
@@ -42,7 +43,7 @@ public class MechanicsPlayRound extends MechanicsControl implements IPlayRound
                 
                 if(input.equalsIgnoreCase("x"))
                 {
-                    folog.FileOutLog(player.firstName, player.lastName, "User quit game");
+                    folog.FileOutLog(Player.firstName, Player.lastName, "User quit game\n\n");
                     messageUI.displayExitMessage();
                     System.exit(0);
                 }
@@ -53,10 +54,12 @@ public class MechanicsPlayRound extends MechanicsControl implements IPlayRound
                     
                     if(caseNum <= 0 || caseNum > cases.getCaseNums().length)
                     {
+                        foerror.FileOutLog(Player.firstName, Player.lastName, "Invalid Case Number - MPlayRound");
                         System.out.println("Invalid case number! Please try again!\n");
                     }
                     else if(!cases.getCases().containsKey(caseNum))
                     {
+                        foerror.FileOutLog(Player.firstName, Player.lastName, "Case already opened - MPlayRound");
                         System.out.println("Case has already been opened! Pick another one!\n");
                     }
                     else
@@ -75,7 +78,7 @@ public class MechanicsPlayRound extends MechanicsControl implements IPlayRound
                             System.out.println(comment);
                         }
                         
-                        folog.FileOutLog(player.firstName, player.lastName, "Opened case " + caseNum +
+                        folog.FileOutLog(Player.firstName, Player.lastName, "Opened case " + caseNum +
                                 " containing $" + cases.getCases().get(caseNum));
 
                         cases.getCases().remove(caseNum);
@@ -88,10 +91,11 @@ public class MechanicsPlayRound extends MechanicsControl implements IPlayRound
                 }
                 catch(NumberFormatException E)
                 {
+                    foerror.FileOutLog(Player.firstName, Player.lastName, "Invalid input! Only case numbers!");
                     System.out.println("Invalid input! Only case numbers!\n");
                 }
             }
         }
-        folog.FileOutLog(player.firstName, player.lastName, "End of Round " + roundNum);
+        folog.FileOutLog(Player.firstName, Player.lastName, "End of Round " + roundNum);
     }
 }
