@@ -6,9 +6,10 @@ package com.mycompany.deal.or.nodeal;
 
 /**
  *
- * @author rafae
+ * @author rcman
  */
 public interface ICaseDisplayUI 
 {
     public void showCases(Cases cases);
 }
+
