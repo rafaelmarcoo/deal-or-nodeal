@@ -13,6 +13,8 @@ public class MechanicsChangeCase extends MechanicsControl implements IChangeCase
     GameCaseDisplayUI caseUI = new GameCaseDisplayUI();
     GameInputUI inputUI = new GameInputUI();
     GameMessageUI messageUI = new GameMessageUI();
+    
+    FileOutGameLog folog = new FileOutGameLog();
 
     @Override
     public void changeCase(Cases cases)
@@ -28,12 +30,14 @@ public class MechanicsChangeCase extends MechanicsControl implements IChangeCase
             
             if(input.equalsIgnoreCase("x"))
             {
+                folog.FileOutLog(player.firstName, player.lastName, "User quit game.");
                 messageUI.displayExitMessage();
                 System.exit(0);
             }
             
             if(input.equalsIgnoreCase("b"))
-            {
+            {                
+                folog.FileOutLog(player.firstName, player.lastName, "Backed out from swapping case.");
                 System.out.println();
                 break;
             }
@@ -61,6 +65,9 @@ public class MechanicsChangeCase extends MechanicsControl implements IChangeCase
 //                    {
 //                        System.out.println("Case " + i + " - Value: $" + cases.getCases().get(i));
 //                    }
+
+                    folog.FileOutLog(player.firstName, player.lastName, "Swapped case " + temp + " with case " + caseNum);
+                    
                     break;
                 }
             }

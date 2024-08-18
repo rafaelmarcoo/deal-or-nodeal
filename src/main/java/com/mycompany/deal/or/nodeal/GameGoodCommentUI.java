@@ -25,7 +25,7 @@ public class GameGoodCommentUI implements ICommentUI
         
         try
         {
-            FileReader fr = new FileReader("./resources/goodcomment.txt");
+            FileReader fr = new FileReader("./resources/UIresources/goodcomment.txt");
             BufferedReader br = new BufferedReader(fr);
             
             String line;

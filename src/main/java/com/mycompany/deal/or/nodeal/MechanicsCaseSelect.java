@@ -18,6 +18,8 @@ public class MechanicsCaseSelect extends MechanicsControl implements ICaseSelect
     GameInputUI inputUI = new GameInputUI();
     GameMessageUI messageUI = new GameMessageUI();
     
+    FileOutGameLog folog = new FileOutGameLog();
+    
     @Override
     public void selectCase(Cases cases) 
     {
@@ -32,6 +34,7 @@ public class MechanicsCaseSelect extends MechanicsControl implements ICaseSelect
             
             if(input.equalsIgnoreCase("x"))
             {
+                folog.FileOutLog(player.firstName, player.lastName, "User quit game.");
                 messageUI.displayExitMessage();
                 System.exit(0);
             }
@@ -50,6 +53,9 @@ public class MechanicsCaseSelect extends MechanicsControl implements ICaseSelect
                     cases.getCases().remove(caseNum);
                     System.out.println("You have selected Case " + playerCase + "!");
                     System.out.println();
+                    
+                    folog.FileOutLog(player.firstName, player.lastName, "Selected case " + playerCase + " for the first time.");
+                    
                     break;
                 }
             }

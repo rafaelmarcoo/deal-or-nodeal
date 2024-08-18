@@ -10,7 +10,7 @@ package com.mycompany.deal.or.nodeal;
  */
 public class MechanicsBanker extends MechanicsControl implements IBanker
 {
-    
+    FileOutGameLog folog = new FileOutGameLog();
     
     @Override
     public double bankerOffer(Cases cases)
@@ -42,10 +42,12 @@ public class MechanicsBanker extends MechanicsControl implements IBanker
         
         System.out.println("Banker's offer is $" + roundedOffer + "!\n");
         
-        
+        folog.FileOutLog(player.firstName, player.lastName, "Banker offered $" + roundedOffer);
         
 //        System.out.println("Your case " + playerCase + " contains: $" + playerCaseValue);
         
+        
+
         return roundedOffer;
     }
 }

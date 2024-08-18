@@ -8,8 +8,9 @@ package com.mycompany.deal.or.nodeal;
  *
  * @author rcman
  */
-public class MechanicsControl extends Person
+public class MechanicsControl
 {
+    public static Player player;
     public static int playerCase;
     public static double playerCaseValue;
     public static int roundNum;
@@ -20,5 +21,5 @@ public class MechanicsControl extends Person
         cases = new Cases();
         roundNum = 1;
     }
-    
+      
 }

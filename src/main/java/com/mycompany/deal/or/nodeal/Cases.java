@@ -32,7 +32,7 @@ public class Cases
         
         try 
         {
-            FileReader fr = new FileReader("./resources/prizes.txt");
+            FileReader fr = new FileReader("./resources/UIresources/prizes.txt");
             BufferedReader br = new BufferedReader(fr);
             
             String line;

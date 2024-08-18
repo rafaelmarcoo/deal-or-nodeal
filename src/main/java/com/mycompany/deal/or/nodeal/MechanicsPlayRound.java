@@ -8,13 +8,15 @@ package com.mycompany.deal.or.nodeal;
  *
  * @author rafae
  */
-public class MechanicsPlayRound implements IPlayRound
+public class MechanicsPlayRound extends MechanicsControl implements IPlayRound
 {
     GameCaseDisplayUI caseUI = new GameCaseDisplayUI();
     GameInputUI inputUI = new GameInputUI();
     GameMessageUI messageUI = new GameMessageUI();
     GameGoodCommentUI goodUI = new GameGoodCommentUI();
     GameBadCommentUI badUI = new GameBadCommentUI();
+    
+    FileOutGameLog folog = new FileOutGameLog();
     
     @Override
     public void playRound(Cases cases, int roundNum) 
@@ -24,7 +26,9 @@ public class MechanicsPlayRound implements IPlayRound
         
         System.out.println("************************ Round " + roundNum + "! ************************");
         System.out.println("\nEnter 'x' to quit anytime!");
-
+        
+        folog.FileOutLog(player.firstName, player.lastName, "Start of Round " + roundNum);
+        
         while(count < 5)
         {
             count++;
@@ -38,6 +42,7 @@ public class MechanicsPlayRound implements IPlayRound
                 
                 if(input.equalsIgnoreCase("x"))
                 {
+                    folog.FileOutLog(player.firstName, player.lastName, "User quit game");
                     messageUI.displayExitMessage();
                     System.exit(0);
                 }
@@ -69,6 +74,9 @@ public class MechanicsPlayRound implements IPlayRound
                             String comment = badUI.comment();
                             System.out.println(comment);
                         }
+                        
+                        folog.FileOutLog(player.firstName, player.lastName, "Opened case " + caseNum +
+                                " containing $" + cases.getCases().get(caseNum));
 
                         cases.getCases().remove(caseNum);
 
@@ -84,6 +92,6 @@ public class MechanicsPlayRound implements IPlayRound
                 }
             }
         }
-        
+        folog.FileOutLog(player.firstName, player.lastName, "End of Round " + roundNum);
     }
 }

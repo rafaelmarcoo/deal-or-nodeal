@@ -15,9 +15,12 @@ public class MechanicsLastPlay extends MechanicsControl implements ILastPlay, IP
     GameInputUI inputUI = new GameInputUI();
     GameMessageUI messageUI = new GameMessageUI();
     GameCaseDisplayUI caseUI = new GameCaseDisplayUI();
-    
-    MechanicsLastChange MlastChange = new MechanicsLastChange();
+    GameGoodCommentUI goodUI = new GameGoodCommentUI();
+    GameBadCommentUI badUI = new GameBadCommentUI();
     GameCompareLastUI compareUI = new GameCompareLastUI();
+    
+    FileOutListOfWin folist = new FileOutListOfWin();
+    FileOutGameLog folog = new FileOutGameLog();
 
     int otherCaseNum;
     double otherCaseVal;
@@ -38,25 +41,51 @@ public class MechanicsLastPlay extends MechanicsControl implements ILastPlay, IP
             
             if(response.equalsIgnoreCase("k"))
             {
+                folog.FileOutLog(player.firstName, player.lastName, "Chose to keep case " + playerCase);
+                
                 Iterator<Integer> caseIterator = cases.getCases().keySet().iterator();
                 if(caseIterator.hasNext())
+                {
                     otherCaseNum = caseIterator.next();
-                
+                }
                 otherCaseVal = cases.getCases().get(otherCaseNum);
+                
                 System.out.println("\nYour case " + playerCase + " contains $" + playerCaseValue);
                 System.out.println("\nThe other case " + otherCaseNum + " contains $" + otherCaseVal + "\n");
                 compareUI.compareValues(playerCaseValue, otherCaseVal);
+                
+                folist.FileOutListWin(player.firstName, player.lastName, playerCaseValue);
+                folog.FileOutLog(player.firstName, player.lastName, "Won $" + playerCaseValue);
+                
                 System.out.println();
                 break;
             }
             else if(response.equalsIgnoreCase("s"))
-            {
-                MlastChange.changeCase(cases);
+            {   
+                Iterator<Integer> caseIterator = cases.getCases().keySet().iterator();
+                if(caseIterator.hasNext())
+                {
+                    otherCaseNum = caseIterator.next();
+                }
+                otherCaseVal = cases.getCases().get(otherCaseNum);
+                
+                folog.FileOutLog(player.firstName, player.lastName, "Chose to swap case " + playerCase + 
+                        " with case " + otherCaseNum);
+                
+                System.out.println("\nYou swapped your case " + playerCase + " for case " + otherCaseNum);
+                System.out.println("\nYour new case " + otherCaseNum + " contains $ " + otherCaseVal + "\n");
+                System.out.println("Your old case " + playerCase + " contains $ " + playerCaseValue + "\n");
+                compareUI.compareValues(otherCaseVal, playerCaseValue);
+                
+                folist.FileOutListWin(player.firstName, player.lastName, otherCaseVal);
+                folog.FileOutLog(player.firstName, player.lastName, "Won $" + otherCaseVal);
+                
                 System.out.println();
                 break;
             }
             else if(response.equalsIgnoreCase("x"))
             {
+                folog.FileOutLog(player.firstName, player.lastName, "User quit game.");
                 messageUI.displayExitMessage();
                 System.exit(0);
             }
@@ -65,6 +94,8 @@ public class MechanicsLastPlay extends MechanicsControl implements ILastPlay, IP
                 System.out.println("Invalid!\n");
             }
         }
+        
+        
     }
     
     // Override playRound for MechanicsLastPlay use
@@ -76,6 +107,8 @@ public class MechanicsLastPlay extends MechanicsControl implements ILastPlay, IP
         
         System.out.println("************************ Round " + roundNum + "! ************************");
         System.out.println("\nEnter 'x' to quit anytime!");
+        
+        folog.FileOutLog(player.firstName, player.lastName, "Start of Round " + roundNum);
 
         while(count < 4)
         {
@@ -110,6 +143,17 @@ public class MechanicsLastPlay extends MechanicsControl implements ILastPlay, IP
                     {
                         System.out.println("-------- Case " + caseNum
                         + " contains: $" + cases.getCases().get(caseNum) + " --------");
+                        
+                        if(cases.getCases().get(caseNum) < 50000.00)
+                        {
+                            String comment = goodUI.comment();
+                            System.out.println(comment);
+                        }
+                        else
+                        {
+                            String comment = badUI.comment();
+                            System.out.println(comment);
+                        }
 
                         cases.getCases().remove(caseNum);
 
@@ -124,6 +168,7 @@ public class MechanicsLastPlay extends MechanicsControl implements ILastPlay, IP
                     System.out.println(E + ". Invalid input! Only case numbers!\n");
                 }
             }
+            folog.FileOutLog(player.firstName, player.lastName, "End of Round " + roundNum);
         }
     }
 }

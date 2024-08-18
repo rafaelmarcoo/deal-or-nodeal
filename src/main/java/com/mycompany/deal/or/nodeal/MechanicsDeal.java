@@ -14,6 +14,9 @@ public class MechanicsDeal extends MechanicsControl implements IDeal
     GameMessageUI messageUI = new GameMessageUI();
     GameCompareUI compareUI = new GameCompareUI();
     
+    FileOutListOfWin folist = new FileOutListOfWin();
+    FileOutGameLog folog = new FileOutGameLog();
+    
     @Override
     public void dealornodeal(double offer)
     {
@@ -28,22 +31,28 @@ public class MechanicsDeal extends MechanicsControl implements IDeal
                 System.out.println("Your case " + playerCase + " contains $" + playerCaseValue);
                 System.out.println();
                 compareUI.compareValues(offer, playerCaseValue);
+                
+                folist.FileOutListWin(player.firstName, player.lastName, offer);
+                folog.FileOutLog(player.firstName, player.lastName, "Accepted banker's offer of $" + offer);
+                
                 messageUI.displayExitMessage();
                 System.exit(0);
             }
             else if(response.equalsIgnoreCase("n"))
             {
+                folog.FileOutLog(player.firstName, player.lastName, "Rejected banker's offer of $" + offer);
                 System.out.println();
                 break;
             }
             else if(response.equalsIgnoreCase("x"))
             {
+                folog.FileOutLog(player.firstName, player.lastName, "User quit game.");
                 messageUI.displayExitMessage();
                 System.exit(0);
             }
             else
             {
-                System.out.println("Invalid!\n");
+                System.out.println("Invalid! ('d' or 'n' only!)\n");
             }
         }
         

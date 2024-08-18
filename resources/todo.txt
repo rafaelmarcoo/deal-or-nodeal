@@ -5,7 +5,9 @@
 ✅	- good comments -> arrayList
 
 	file out
-	- player Name and date and winnings
-	- player Name and date and game logs
+✅	- player list and date and winnings
+✅	- player Name and date and game logs
 	- errors
+
+
 

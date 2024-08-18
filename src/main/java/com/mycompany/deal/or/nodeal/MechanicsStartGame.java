@@ -19,8 +19,11 @@ public class MechanicsStartGame extends MechanicsControl implements IGameStart
     MechanicsChangeCase Mchange = new MechanicsChangeCase();
     MechanicsDeal Mdeal = new MechanicsDeal();
     MechanicsLastPlay Mlast = new MechanicsLastPlay();
-
-//    private final Cases cases = new Cases();
+    MechanicsGetName Mname = new MechanicsGetName();
+    
+    FileOutGameLog folog = new FileOutGameLog();
+   
+//    public static Player player;
     
     @Override
     public void startGame() 
@@ -32,6 +35,11 @@ public class MechanicsStartGame extends MechanicsControl implements IGameStart
             
             if(response.equalsIgnoreCase("w"))
             {
+                String firstName = Mname.getFirstName();
+                String lastName = Mname.getLastName();
+                player = new Player(firstName, lastName);
+                folog.FileOutLog(firstName, lastName, "Entered first and last name.");
+                
                 Mselect.selectCase(cases);
                 
                 while(roundNum <= 4)
@@ -56,11 +64,13 @@ public class MechanicsStartGame extends MechanicsControl implements IGameStart
 
                             if(response.equalsIgnoreCase("y"))
                             {
+                                folog.FileOutLog(firstName, lastName, "Decided to swap case.");
                                 Mchange.changeCase(cases);
                                 break;
                             }
                             else if(response.equalsIgnoreCase("n"))
                             {
+                                folog.FileOutLog(firstName, lastName, "Refused to swap case.");
                                 System.out.println();
                                 break;
                             }
@@ -78,7 +88,6 @@ public class MechanicsStartGame extends MechanicsControl implements IGameStart
                     Mlast.playRound(cases, roundNum);
                     Mlast.lastPlay(cases);
                 }
-                
             }
             else if(response.equalsIgnoreCase("t"))
             {
@@ -87,6 +96,7 @@ public class MechanicsStartGame extends MechanicsControl implements IGameStart
             }
             else if(response.equalsIgnoreCase("x"))
             {
+                folog.FileOutLog(player.firstName, player.lastName, "User quit game.");
                 messageUI.displayExitMessage();
                 break;
             }
@@ -96,7 +106,7 @@ public class MechanicsStartGame extends MechanicsControl implements IGameStart
                 continue;
             }
             
-//            System.out.println("Your case " + playerCase + " contains $" + playerCaseValue);
+            folog.FileOutLog(player.firstName, player.lastName, "Game Finished.\n\n");
             messageUI.displayExitMessage();
             break;
         }
