@@ -8,8 +8,15 @@ package com.mycompany.deal.or.nodeal;
  *
  * @author rafae
  */
+
+
+// This class is responsible for displaying various messages to the player 
+// in the Deal or No Deal game. It implements the IMessageUI interface, ensuring it provides 
+// methods to display the welcome message, tutorial, and exit message.
+
 public class GameMessageUI implements IMessageUI
 {
+    // Displays welcome message to the player, with options to start, quit, and for the tutorial
     @Override
     public void displayWelcomeMessage() 
     {
@@ -17,6 +24,7 @@ public class GameMessageUI implements IMessageUI
         System.out.print("Enter 'w' to start a game! || Enter 't' for a tutorial! || To quit, enter 'x'!  => ");
     }
     
+    // Displays game tutorial
     @Override
     public void tutorial()
     {
@@ -36,6 +44,7 @@ public class GameMessageUI implements IMessageUI
                 + "----------------------------------------------------------------------------------");
     }
     
+    // Displays exit message
     @Override
     public void displayExitMessage()
     {

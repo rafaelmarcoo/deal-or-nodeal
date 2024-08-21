@@ -61,12 +61,7 @@ public class MechanicsChangeCase extends MechanicsControl implements IChangeCase
                     playerCaseValue = cases.getCases().get(caseNum);
                     cases.getCases().remove(caseNum);
                     System.out.println("You have chosen Case " + playerCase + "!");
-                    System.out.println();
-                    
-//                    for(int i : cases.getCases().keySet())
-//                    {
-//                        System.out.println("Case " + i + " - Value: $" + cases.getCases().get(i));
-//                    }
+                    System.out.println();         
 
                     folog.FileOutLog(Player.firstName, Player.lastName, "Swapped case " + temp + " with case " + caseNum);
                     

@@ -7,6 +7,8 @@ package com.mycompany.deal.or.nodeal;
  *
  * @author rafae
  */
+
+// This class contains the main function to start the game 
 public class DealOrNoDealGame extends MechanicsControl
 {   
     public static void main(String[] args) 

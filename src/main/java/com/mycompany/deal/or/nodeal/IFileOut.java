@@ -8,6 +8,9 @@ package com.mycompany.deal.or.nodeal;
  *
  * @author rafae
  */
+
+// Implemented in FileOutErrorLog.java
+// and FileOutGameLog.java
 public interface IFileOut 
 {
     public void FileOutLog(String firstName, String lastName, String action);

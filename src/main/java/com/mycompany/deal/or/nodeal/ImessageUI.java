@@ -8,6 +8,8 @@ package com.mycompany.deal.or.nodeal;
  *
  * @author rcman
  */
+
+// Implemented in GameMessageUI.java
 public interface IMessageUI 
 {
     public void displayWelcomeMessage();

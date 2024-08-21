@@ -15,10 +15,17 @@ import java.util.Random;
  *
  * @author rcman
  */
+
+// This class handles a FILE READ FUNCTION 
+// This class handles the remarks displayed in the UI when a player opens a low valued case,
+// read from a file contained in /resources/UIresources/goodcomment.txt
+// Used a collection - ArrayList to store the remarks/comments
 public class GameGoodCommentUI implements ICommentUI
 {
+    // Collection used - ArrayList
     private ArrayList<String> comments;
     
+    // Constructor which uses FILE READ to read the comments
     public GameGoodCommentUI()
     {
         comments = new ArrayList<>();
@@ -45,6 +52,7 @@ public class GameGoodCommentUI implements ICommentUI
         }
     }
     
+    // Implemented method to randomly pick a good comment from the ArrayList
     @Override
     public String comment()
     {

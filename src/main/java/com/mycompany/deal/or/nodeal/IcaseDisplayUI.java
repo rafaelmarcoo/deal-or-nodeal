@@ -8,6 +8,8 @@ package com.mycompany.deal.or.nodeal;
  *
  * @author rcman
  */
+
+// Implemented in GameCaseDisplayUI.java
 public interface ICaseDisplayUI 
 {
     public void showCases(Cases cases);

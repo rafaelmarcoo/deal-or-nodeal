@@ -8,6 +8,8 @@ package com.mycompany.deal.or.nodeal;
  *
  * @author rcman
  */
+
+// Implemented in GameInputUI
 public interface IInputUI 
 {
     public String getInput();

@@ -8,6 +8,9 @@ package com.mycompany.deal.or.nodeal;
  *
  * @author rcman
  */
+
+// Implemented in MechanicsPlayRound.java
+// and MechanicsLastPlay.java
 public interface IPlayRound 
 {
     public void playRound(Cases cases, int roundNum);

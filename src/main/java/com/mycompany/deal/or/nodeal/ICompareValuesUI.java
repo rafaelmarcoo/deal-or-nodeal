@@ -8,6 +8,9 @@ package com.mycompany.deal.or.nodeal;
  *
  * @author rcman
  */
+
+// Implemented in GameComapareLastUI.java
+// and GameCompareUI.java
 public interface ICompareValuesUI 
 {
     public void compareValues(double playerValue, double otherValue);

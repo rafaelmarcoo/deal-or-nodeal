@@ -8,6 +8,8 @@ package com.mycompany.deal.or.nodeal;
  *
  * @author rcman
  */
+
+// Implemented in MechanicsBanker.java
 public interface IBanker
 {
     public double bankerOffer(Cases cases);

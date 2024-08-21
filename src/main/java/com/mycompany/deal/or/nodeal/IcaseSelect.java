@@ -8,6 +8,8 @@ package com.mycompany.deal.or.nodeal;
  *
  * @author rcman
  */
+
+// Implemented in MechanicsCaseSelect.java
 public interface ICaseSelect 
 {
     public void selectCase(Cases cases);

@@ -8,6 +8,8 @@ package com.mycompany.deal.or.nodeal;
  *
  * @author rcman
  */
+
+// Implemented in MechanicsLastPlay.java
 public interface ILastPlay 
 {
     public void lastPlay(Cases cases);

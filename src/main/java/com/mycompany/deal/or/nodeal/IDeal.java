@@ -8,6 +8,8 @@ package com.mycompany.deal.or.nodeal;
  *
  * @author rcman
  */
+
+// Implemented in MechanicsDeal.java
 public interface IDeal 
 {
     public void dealornodeal(double offer);

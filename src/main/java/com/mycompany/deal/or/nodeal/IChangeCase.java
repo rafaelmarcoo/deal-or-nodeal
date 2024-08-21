@@ -8,6 +8,8 @@ package com.mycompany.deal.or.nodeal;
  *
  * @author rcman
  */
+
+// Implemented in MechanicsChangeCase.java
 public interface IChangeCase 
 {
     public void changeCase(Cases cases);

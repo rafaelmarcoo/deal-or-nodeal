@@ -8,7 +8,9 @@ package com.mycompany.deal.or.nodeal;
  *
  * @author rcman
  */
-public interface IGetName 
+
+// Implemented in MechanicsGetName.java
+public interface IGetName
 {
     public String getFirstName();
     public String getLastName();

@@ -16,17 +16,25 @@ import java.time.format.DateTimeFormatter;
  *
  * @author rcman
  */
+
+// This class handles a FILE WRITE FUNCTION 
+// This class writes all the events and the decisions a player makes within a game in a file, 
+// contained in /resources/GameLogs
+// Also uses date object to write down date and time
 public class FileOutGameLog implements IFileOut
 {
     @Override
     public void FileOutLog(String firstName, String lastName, String action)
     {
+        // Date object
         LocalDate date = LocalDate.now();
         
+        // Time object and formatting
         LocalDateTime time = LocalDateTime.now();
         DateTimeFormatter formatTime = DateTimeFormatter.ofPattern("HH:mm:ss");
         String timeNow = time.format(formatTime);
         
+        // File Write function - writes all the game logs/events/decisions in a file
         try
         {
             FileOutputStream fos = new FileOutputStream("./resources/GameLogs/" + date + "_" +

@@ -8,6 +8,9 @@ package com.mycompany.deal.or.nodeal;
  *
  * @author rcman
  */
+
+// Implemented in GameGoodCommentUI.java
+// and GameBadCommentUI.java
 public interface ICommentUI 
 {
     public String comment();

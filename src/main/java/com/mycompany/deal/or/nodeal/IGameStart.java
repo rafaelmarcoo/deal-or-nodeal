@@ -8,6 +8,8 @@ package com.mycompany.deal.or.nodeal;
  *
  * @author rafae
  */
+
+// Implemented in MechanicsStartGame.java
 public interface IGameStart 
 {
     public void startGame();

@@ -16,10 +16,13 @@ import java.util.Random;
  * @author rcman
  */
 
-
+// This class is responsible for handling of cases and the shuffling of the values in the cases
+// Retrieves prize values from a file, shuffling, and storing them in a HashMap collection
+// Also contains a FILE READ FUNCTION  /resources/UIresources/prizes.txt
+// Used a collection - HashMap 
 public class Cases
 {
-    private HashMap<Integer, Double> cases;
+    private HashMap<Integer, Double> cases; 
     private int[] caseNums;
     private double[] caseValues;
     private int totalCases = 26;
@@ -30,6 +33,7 @@ public class Cases
         caseNums = new int[totalCases];
         caseValues = new double[totalCases];
         
+        // File Read function - reading the money values from a file
         try 
         {
             FileReader fr = new FileReader("./resources/UIresources/prizes.txt");
@@ -37,7 +41,7 @@ public class Cases
             
             String line;
             int index = 0;
-            while((line = br.readLine()) != null && index < totalCases)
+            while((line = br.readLine()) != null && index < totalCases) // Reading each line of the file and putting it into arrays
             {
                 double value = Double.parseDouble(line);
                 caseValues[index] = value;
@@ -46,6 +50,7 @@ public class Cases
             }
             br.close();  
             
+            // Shuffling of caseValues array using a for loop and a Random object
             Random rand = new Random();
             for(int i = 0; i < caseValues.length; i++)
             {
@@ -55,6 +60,7 @@ public class Cases
                 caseValues[i] = temp;
             }
             
+            // Filling in the HashMap with caseNums as the keys and caseValues as the values 
             for(int i = 0; i < caseNums.length; i++)
             {
                 cases.put(caseNums[i], caseValues[i]);
@@ -71,7 +77,8 @@ public class Cases
         
         
     }
-
+    
+    // Encapsulation - methods to access the HashMap, arrays - for implementation of game methods
     public HashMap<Integer, Double> getCases() 
     {
         return cases;
@@ -91,16 +98,6 @@ public class Cases
     {
         return totalCases;
     }
-    
-//    public static void main(String[] args) 
-//    {   
-//        Cases cases = new Cases();
-//        
-//        for(int i : cases.getCases().keySet())
-//        {
-//            System.out.println("Case " + i + " - Value: $" + cases.getCases().get(i));
-//        }
-//    }
 }
 
 

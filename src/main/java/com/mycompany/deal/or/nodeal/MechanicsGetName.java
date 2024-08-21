@@ -44,6 +44,7 @@ public class MechanicsGetName implements IGetName
             }
         }
         
+        first = first.toUpperCase();
         return first;
     }
     
@@ -76,6 +77,8 @@ public class MechanicsGetName implements IGetName
                 System.out.println(" Try again!");
             }
         }
+        
+        last = last.toUpperCase();
         return last;
     }
 }
