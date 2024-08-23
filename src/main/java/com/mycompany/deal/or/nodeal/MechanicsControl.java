@@ -8,6 +8,12 @@ package com.mycompany.deal.or.nodeal;
  *
  * @author rcman
  */
+
+/*
+ This class serves as a base class for managing the core game mechanics 
+ of Deal or No Deal. It keeps static variables for tracking the player, the selected case, 
+ the value of the selected case, the current round number, and the collection of cases.
+*/
 public class MechanicsControl
 {
     public static Player player;

@@ -10,8 +10,16 @@ import java.util.Iterator;
  *
  * @author rcman
  */
+
+/*
+ This class handles the final round of the game, where the player
+ can decide whether to keep their current case or swap it with the last remaining case on display.
+ It also overrides the playRound method for playing standard rounds, and it implements 
+ the ILastPlay and IPlayRound interfaces.
+*/
 public class MechanicsLastPlay extends MechanicsControl implements ILastPlay, IPlayRound
 {
+    // UI components for input and displaying various game messages
     GameInputUI inputUI = new GameInputUI();
     GameMessageUI messageUI = new GameMessageUI();
     GameCaseDisplayUI caseUI = new GameCaseDisplayUI();
@@ -19,10 +27,12 @@ public class MechanicsLastPlay extends MechanicsControl implements ILastPlay, IP
     GameBadCommentUI badUI = new GameBadCommentUI();
     GameCompareLastUI compareUI = new GameCompareLastUI();
     
+    // Components for logging and storing game data
     FileOutListOfWin folist = new FileOutListOfWin();
     FileOutGameLog folog = new FileOutGameLog();
     FileOutErrorLog foerror = new FileOutErrorLog();
 
+    // Variables to store the number and value of the other (last) case
     int otherCaseNum;
     double otherCaseVal;
     
@@ -33,17 +43,21 @@ public class MechanicsLastPlay extends MechanicsControl implements ILastPlay, IP
         System.out.println("You can either keep your case! Or \nswap it with the"
                 + " last case on display");
         
+        // Display the remaining cases to the player
         caseUI.showCases(cases);
         
+        // Loop until the player makes a valid choice (keep or swap)
         while(true)
         {
             System.out.print("Keep your case or swap it? ('k' or 's') => ");
             String response = inputUI.getInput();
             
+            // Player chooses to keep their case
             if(response.equalsIgnoreCase("k"))
             {
                 folog.FileOutLog(Player.firstName, Player.lastName, "Chose to keep case " + playerCase);
                 
+                // Get the last remaining case number and value using an Iterator
                 Iterator<Integer> caseIterator = cases.getCases().keySet().iterator();
                 if(caseIterator.hasNext())
                 {
@@ -51,18 +65,22 @@ public class MechanicsLastPlay extends MechanicsControl implements ILastPlay, IP
                 }
                 otherCaseVal = cases.getCases().get(otherCaseNum);
                 
+                // Display the final values and compare them
                 System.out.println("\nYour case " + playerCase + " contains $" + playerCaseValue);
                 System.out.println("\nThe other case " + otherCaseNum + " contains $" + otherCaseVal + "\n");
                 compareUI.compareValues(playerCaseValue, otherCaseVal);
                 
+                // Log the win and update the list of winners
                 folist.FileOutListWin(Player.firstName, Player.lastName, playerCaseValue);
                 folog.FileOutLog(Player.firstName, Player.lastName, "Won $" + playerCaseValue);
                 
                 System.out.println();
                 break;
             }
+            // Player chooses to swap their case
             else if(response.equalsIgnoreCase("s"))
             {   
+                // Get the last remaining case number and value using an Iterator
                 Iterator<Integer> caseIterator = cases.getCases().keySet().iterator();
                 if(caseIterator.hasNext())
                 {
@@ -73,23 +91,27 @@ public class MechanicsLastPlay extends MechanicsControl implements ILastPlay, IP
                 folog.FileOutLog(Player.firstName, Player.lastName, "Chose to swap case " + playerCase + 
                         " with case " + otherCaseNum);
                 
+                // Display the results of the swap
                 System.out.println("\nYou swapped your case " + playerCase + " for case " + otherCaseNum);
                 System.out.println("\nYour new case " + otherCaseNum + " contains $ " + otherCaseVal + "\n");
                 System.out.println("Your old case " + playerCase + " contains $ " + playerCaseValue + "\n");
                 compareUI.compareValues(otherCaseVal, playerCaseValue);
                 
+                // Log the win and update the list of winners
                 folist.FileOutListWin(Player.firstName, Player.lastName, otherCaseVal);
                 folog.FileOutLog(Player.firstName, Player.lastName, "Won $" + otherCaseVal);
                 
                 System.out.println();
                 break;
             }
+            // Player chooses to quit the game
             else if(response.equalsIgnoreCase("x"))
             {
                 folog.FileOutLog(Player.firstName, Player.lastName, "User quit game.\n\n");
                 messageUI.displayExitMessage();
                 System.exit(0);
             }
+            // Invalid input handling
             else
             {
                 foerror.FileOutLog(Player.firstName, Player.lastName, "Invalid input - MLastPlay");
@@ -105,7 +127,7 @@ public class MechanicsLastPlay extends MechanicsControl implements ILastPlay, IP
     public void playRound(Cases cases, int roundNum)
     {
         int count = 0;
-        int casesToPick = 4;
+        int casesToPick = 4; // Only 4 cases of the last round
         
         System.out.println("************************ Round " + roundNum + "! ************************");
         System.out.println("\nEnter 'x' to quit anytime!");
