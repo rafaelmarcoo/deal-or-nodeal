@@ -93,7 +93,7 @@ public class MechanicsStartGame extends MechanicsControl implements IGameStart
                             }
                             else
                             {
-                                foerror.FileOutLog(firstName, lastName, "Invalid input - Swapping Cases");
+                                foerror.FileOutLog(firstName, lastName, "Invalid input - Swapping Cases - MStartGame");
                                 System.out.println("Invalid!\n");
                             }
                         }

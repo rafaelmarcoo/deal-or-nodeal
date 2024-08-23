@@ -49,7 +49,7 @@ public class MechanicsGetName implements IGetName
             }
             catch(IllegalArgumentException E)
             {
-                System.out.println(" Try again!");
+                System.out.println("Try again!");
             }
         }
         
@@ -88,7 +88,7 @@ public class MechanicsGetName implements IGetName
             }
             catch(IllegalArgumentException E)
             {
-                System.out.println(" Try again!");
+                System.out.println("Try again!");
             }
         }
         
