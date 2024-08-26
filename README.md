@@ -1,7 +1,7 @@
 # deal-or-nodeal
 This project is a Java-based implementation of the popular television game show "Deal or No Deal." The game simulates the experience of choosing cases, dealing with the banker, and deciding whether to keep or switch cases. The project demonstrates the application of Object-Oriented Programming (OOP) principles and SOLID design principles, all concepts I have learned at university.
 
-## Technology used and Concepts applied
+## Technologies used and Concepts applied
 - SOLID Design
 - Object Oriented Programming
 - Java: The main programming language used to develop this project.
