@@ -14,6 +14,7 @@ package com.mycompany.deal.or.nodeal;
 // Extends MechanicsControl as it contains all info required in one game
 public class GameCompareLastUI extends MechanicsControl implements ICompareValuesUI
 {
+    @Override
     public void compareValues(double playerValue, double otherValue)
     {
         // If the player's case is higher than the otherValue, then it's a good comment. Else, no
