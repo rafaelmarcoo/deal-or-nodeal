@@ -9,7 +9,7 @@ This project is a Java-based implementation of the popular television game show 
 - File I/O: For persistence storage, as per my assignment requirements.
 
 ## How to use the application:
-- Clone repo: `git clone https://github.com/rafaelmarcoo/deal-or-no-deal`
+- Clone repo: `git clone https://github.com/rafaelmarcoo/deal-or-nodeal`
 - Open on NetBeans 14 with JDK 11
 - Run the main method in DealOrNoDealGame.java to run the game
 
